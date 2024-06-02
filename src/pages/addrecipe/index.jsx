@@ -135,6 +135,7 @@ const addrecipe = () => {
             name="title"
             placeholder="Title"
             className="w-full h-full bg-[#F6F5F4] pl-8 font-air font-medium text-[24px] text-[#666666] rounded-2xl outline-none"
+            value={formRecipe.title}
             onChange={handleChangeTitle}
           />
         </div>
@@ -145,6 +146,7 @@ const addrecipe = () => {
             cols="30"
             rows="100"
             placeholder="Ingredients"
+            value={formRecipe.description}
             onChange={handleChangeDescription}
             className="w-full h-full bg-[#F6F5F4] pl-8 pt-8 font-air font-medium text-[24px] text-[#666666] rounded-2xl outline-none"
           ></textarea>
