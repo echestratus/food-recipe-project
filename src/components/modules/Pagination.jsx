@@ -1,5 +1,5 @@
-import { IconButton } from '@material-tailwind/react'
-import React, { useState } from 'react'
+
+import React from 'react'
 import { ArrowRightIcon, ArrowLeftIcon } from '@heroicons/react/24/outline'
 const Pagination = ({pagination, setPagination}) => {
 
