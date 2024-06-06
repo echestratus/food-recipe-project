@@ -2,24 +2,32 @@ import Footer from "@/components/modules/Footer";
 import Navbar from "@/components/modules/Navbar";
 import Pagination from "@/components/modules/Pagination";
 import RecipeCard from "@/components/modules/RecipeCard";
+import { getAllRecipesAction } from "@/configs/redux/actions/getAllRecipesAction";
+import { store } from "@/configs/redux/store";
 import axios from "axios";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { useDispatch, useSelector } from "react-redux";
 
 export async function getServerSideProps() {
-  try {
-    const res = await axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}recipes?limit=60000`
-    );
-    return {
-      props: { recipesProps: res.data.data },
-    };
-  } catch (error) {
-    console.log(error.response);
-  }
+  await store.dispatch(getAllRecipesAction())
+  const {recipes: allRecipes} = store.getState().getAllRecipes
+  return {
+    props: { recipesProps: allRecipes },
+  };
+  // try {
+  //   const res = await axios.get(
+  //     `${process.env.NEXT_PUBLIC_API_URL}recipes?limit=60000`
+  //   );
+  //   return {
+  //     props: { recipesProps: res.data.data },
+  //   };
+  // } catch (error) {
+  //   console.log(error.response);
+  // }
 }
 
 const recipes = ({ recipesProps }) => {

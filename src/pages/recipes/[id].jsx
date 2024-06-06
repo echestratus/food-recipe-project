@@ -9,12 +9,14 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { useSelector } from "react-redux";
 
 const ProductDetail = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [isSaved, setIsSaved] = useState(false)
   const [isLiked, setIsLiked] = useState(false)
+  const {login: isLogin} = useSelector((state) => state.getProfile)
   let imgURL = "/default-recipeimg.png";
   const [detailRecipe, setDetailRecipe] = useState({
     author: {
@@ -31,146 +33,166 @@ const ProductDetail = () => {
     updated_at: "",
   });
   useEffect(() => {
-    axios.all([
-        axios.get(`${process.env.NEXT_PUBLIC_API_URL}recipes/${router.query.id}`),
-        axios.get(`${process.env.NEXT_PUBLIC_API_URL}recipes/save`, {
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
-            }
-        }),
-        axios.get(`${process.env.NEXT_PUBLIC_API_URL}recipes/like`, {
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
-            }
-        })
-    ])
-    .then(axios.spread(function (recipe, saved, liked) {
-        console.log(recipe.data.data);
-        setDetailRecipe(recipe.data.data);
-
-    // Search saved recipe id if any
-    for (const index in saved.data.data) {
-        if (saved.data.data[index].recipe_id === router.query.id) {
-            setIsSaved(true) 
-        }
-    }
-    // Search liked recipe id if any
-    for (const index in liked.data.data) {
-        if (liked.data.data[index].recipe_id === router.query.id) {
-            setIsLiked(true) 
-        }
-    }
-
-        setLoading(false);
-    }))
-    .catch((err) => {
+    if (isLogin === true) {
+      axios.all([
+          axios.get(`${process.env.NEXT_PUBLIC_API_URL}recipes/${router.query.id}`),
+          axios.get(`${process.env.NEXT_PUBLIC_API_URL}recipes/save`, {
+              headers: {
+                  'Authorization': `Bearer ${localStorage.getItem('token')}`
+              }
+          }),
+          axios.get(`${process.env.NEXT_PUBLIC_API_URL}recipes/like`, {
+              headers: {
+                  'Authorization': `Bearer ${localStorage.getItem('token')}`
+              }
+          })
+      ])
+      .then(axios.spread(function (recipe, saved, liked) {
+          console.log(recipe.data.data);
+          setDetailRecipe(recipe.data.data);
+  
+      // Search saved recipe id if any
+      for (const index in saved.data.data) {
+          if (saved.data.data[index].recipe_id === router.query.id) {
+              setIsSaved(true) 
+          }
+      }
+      // Search liked recipe id if any
+      for (const index in liked.data.data) {
+          if (liked.data.data[index].recipe_id === router.query.id) {
+              setIsLiked(true) 
+          }
+      }
+  
+          setLoading(false);
+      }))
+      .catch((err) => {
+          console.log(err.response);
+          setLoading(false)
+      })
+    } else {
+      axios.get(`${process.env.NEXT_PUBLIC_API_URL}recipes/${router.query.id}`)
+      .then((res) => {
+        setDetailRecipe(res.data.data)
+        setLoading(false)
+      })
+      .catch((err) => {
         console.log(err.response);
         setLoading(false)
-    })
+      })
+    }
   }, []);
   function isImage(url) {
     return /^https?:\/\/.+\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
   }
 
   const handleClickSave = () => {
-    if (isSaved === false) {
-        setIsSaved(true)
-        axios.post(`${process.env.NEXT_PUBLIC_API_URL}recipes/save`, {
-            recipe_id: router.query.id
-        }, {
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
-            }
-        })
-        .then((res) => {
-            console.log(res.data.message);
-            alert(res.data.message)
-        })
-        .catch((err) => {
-            console.log(err.response);
-            alert(`Failed to save recipe`)
-        })
+    if (isLogin === true) {
+      if (isSaved === false) {
+          setIsSaved(true)
+          axios.post(`${process.env.NEXT_PUBLIC_API_URL}recipes/save`, {
+              recipe_id: router.query.id
+          }, {
+              headers: {
+                  'Authorization': `Bearer ${localStorage.getItem('token')}`
+              }
+          })
+          .then((res) => {
+              console.log(res.data.message);
+              alert(res.data.message)
+          })
+          .catch((err) => {
+              console.log(err.response);
+              alert(`Failed to save recipe`)
+          })
+      } else {
+          setIsSaved(false)
+          axios.get(`${process.env.NEXT_PUBLIC_API_URL}recipes/save`, {
+              headers: {
+                  'Authorization': `Bearer ${localStorage.getItem('token')}`
+              }
+          })
+          .then((saved) => {
+              for (const index in saved.data.data) {
+                  if (saved.data.data[index].recipe_id === router.query.id) {
+                      axios.delete(`${process.env.NEXT_PUBLIC_API_URL}recipes/save/${saved.data.data[index].id}`, {
+                          headers: {
+                              'Authorization': `Bearer ${localStorage.getItem('token')}`
+                          }
+                      })
+                      .then((res) => {
+                          console.log(res.data.message);
+                          alert(res.data.message)
+                      })
+                      .catch((err) => {
+                          console.log(err.response);
+                          alert(`Failed to delete saved recipe`)
+                      })
+                  }
+              }
+          })
+          .catch((err) => {
+              console.log(err.response);
+              alert(`Failed to fetch saved recipes`)
+          })
+      }
     } else {
-        setIsSaved(false)
-        axios.get(`${process.env.NEXT_PUBLIC_API_URL}recipes/save`, {
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
-            }
-        })
-        .then((saved) => {
-            for (const index in saved.data.data) {
-                if (saved.data.data[index].recipe_id === router.query.id) {
-                    axios.delete(`${process.env.NEXT_PUBLIC_API_URL}recipes/save/${saved.data.data[index].id}`, {
-                        headers: {
-                            'Authorization': `Bearer ${localStorage.getItem('token')}`
-                        }
-                    })
-                    .then((res) => {
-                        console.log(res.data.message);
-                        alert(res.data.message)
-                    })
-                    .catch((err) => {
-                        console.log(err.response);
-                        alert(`Failed to delete saved recipe`)
-                    })
-                }
-            }
-        })
-        .catch((err) => {
-            console.log(err.response);
-            alert(`Failed to fetch saved recipes`)
-        })
+      router.push('/auth/login')
     }
   }
 
   const handleClickLike = () => {
-    if (isLiked === false) {
-        setIsLiked(true)
-        axios.post(`${process.env.NEXT_PUBLIC_API_URL}recipes/like`, {
-            recipe_id: router.query.id
-        }, {
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
-            }
-        })
-        .then((res) => {
-            console.log(res.data.message);
-            alert(res.data.message)
-        })
-        .catch((err) => {
-            console.log(err.response);
-            alert(`Failed to liked recipe`)
-        })
+    if (isLogin === true) {
+      if (isLiked === false) {
+          setIsLiked(true)
+          axios.post(`${process.env.NEXT_PUBLIC_API_URL}recipes/like`, {
+              recipe_id: router.query.id
+          }, {
+              headers: {
+                  'Authorization': `Bearer ${localStorage.getItem('token')}`
+              }
+          })
+          .then((res) => {
+              console.log(res.data.message);
+              alert(res.data.message)
+          })
+          .catch((err) => {
+              console.log(err.response);
+              alert(`Failed to liked recipe`)
+          })
+      } else {
+          setIsLiked(false)
+          axios.get(`${process.env.NEXT_PUBLIC_API_URL}recipes/like`, {
+              headers: {
+                  'Authorization': `Bearer ${localStorage.getItem('token')}`
+              }
+          })
+          .then((liked) => {
+              for (const index in liked.data.data) {
+                  if (liked.data.data[index].recipe_id === router.query.id) {
+                      axios.delete(`${process.env.NEXT_PUBLIC_API_URL}recipes/like/${liked.data.data[index].id}`, {
+                          headers: {
+                              'Authorization': `Bearer ${localStorage.getItem('token')}`
+                          }
+                      })
+                      .then((res) => {
+                          console.log(res.data.message);
+                          alert(res.data.message)
+                      })
+                      .catch((err) => {
+                          console.log(err.response);
+                          alert(`Failed to unlike recipe`)
+                      })
+                  }
+              }
+          })
+          .catch((err) => {
+              console.log(err.response);
+              alert(`Failed to fetch liked recipes`)
+          })
+      }
     } else {
-        setIsLiked(false)
-        axios.get(`${process.env.NEXT_PUBLIC_API_URL}recipes/like`, {
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
-            }
-        })
-        .then((liked) => {
-            for (const index in liked.data.data) {
-                if (liked.data.data[index].recipe_id === router.query.id) {
-                    axios.delete(`${process.env.NEXT_PUBLIC_API_URL}recipes/like/${liked.data.data[index].id}`, {
-                        headers: {
-                            'Authorization': `Bearer ${localStorage.getItem('token')}`
-                        }
-                    })
-                    .then((res) => {
-                        console.log(res.data.message);
-                        alert(res.data.message)
-                    })
-                    .catch((err) => {
-                        console.log(err.response);
-                        alert(`Failed to unlike recipe`)
-                    })
-                }
-            }
-        })
-        .catch((err) => {
-            console.log(err.response);
-            alert(`Failed to fetch liked recipes`)
-        })
+      router.push('/auth/login')
     }
   }
 
