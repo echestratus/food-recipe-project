@@ -10,8 +10,8 @@ const addrecipe = () => {
     description: "",
     image: "",
   });
+
   const handleUploadImage = (e) => {
-    console.log(e.target.files[0]);
     const file = e.target.files[0];
     const formData = new FormData();
     formData.append("file", file);
@@ -23,7 +23,6 @@ const addrecipe = () => {
       })
       .then((res) => {
         const { file_url } = res.data.data;
-        console.log(file_url);
         setFormRecipe({
           ...formRecipe,
           image: file_url,
@@ -34,60 +33,85 @@ const addrecipe = () => {
         alert(`Failed to upload image`);
       });
   };
+
   const handleChangeTitle = (e) => {
     setFormRecipe({
       ...formRecipe,
-      [e.target.name]: e.target.value
-    })
-  }
+      [e.target.name]: e.target.value,
+    });
+  };
+
   const handleChangeDescription = (e) => {
     setFormRecipe({
       ...formRecipe,
-      [e.target.name]: e.target.value
-    })
-  }
+      [e.target.name]: e.target.value,
+    });
+  };
+
   const handleClickPost = () => {
-    console.log(formRecipe);
-    axios.post(`${process.env.NEXT_PUBLIC_API_URL}recipes/`, {
-      title: formRecipe.title,
-      description: formRecipe.description,
-      image: formRecipe.image
-    }, {
-      headers: {
-        'Authorization': `Bearer ${localStorage.getItem('token')}`
-      }
-    })
-    .then((res) => {
-      console.log(res.data.message);
-      alert(res.data.message)
-      setFormRecipe({
-        title: "",
-        description: "",
-        image: "",
+    axios
+      .post(
+        `${process.env.NEXT_PUBLIC_API_URL}recipes/`,
+        {
+          title: formRecipe.title,
+          description: formRecipe.description,
+          image: formRecipe.image,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      )
+      .then((res) => {
+        alert(res.data.message);
+        setFormRecipe({
+          title: "",
+          description: "",
+          image: "",
+        });
       })
-    })
-    .catch((err) => {
-      console.log(err.response);
-      alert(`Failed to post recipe`)
-    })
-  }
+      .catch((err) => {
+        console.log(err.response);
+        alert(`Failed to post recipe`);
+      });
+  };
+
   return (
     <div className="bg-[#FFFFFF]">
-      <div className="container max-w-[1920px] mx-auto">
-        <header className="flex justify-center">
+      <div className="
+      max-sm:container max-sm:max-w-[640px] max-sm:mx-auto
+      2xl:container 2xl:max-w-[1920px] 2xl:mx-auto
+      ">
+        <header className="
+        max-sm:flex max-sm:justify-center
+        2xl:flex 2xl:justify-center
+        ">
           <Navbar />
         </header>
       </div>
-      <div className="w-[1720px] h-auto min-h-[1210px] mx-auto mt-10">
-        <label className="w-[1300px] h-[480px] mx-auto bg-[#F6F5F4] rounded-2xl flex justify-center items-center relative">
+      <div className="
+      max-sm:w-[80%] max-sm:mx-auto max-sm:mt-10
+      2xl:w-[1720px] 2xl:h-auto 2xl:min-h-[1210px] 2xl:mx-auto 2xl:mt-10
+      ">
+        <label className="
+        max-sm:w-[100%] max-sm:h-[240px] max-sm:mx-auto max-sm:bg-[#F6F5F4] max-sm:rounded-xl max-sm:flex max-sm:justify-center max-sm:items-center max-sm:relative
+        2xl:w-[1300px] 2xl:h-[480px] 2xl:mx-auto 2xl:bg-[#F6F5F4] 2xl:rounded-2xl 2xl:flex 2xl:justify-center 2xl:items-center 2xl:relative
+        ">
           {formRecipe.image ? (
             <img
               src={formRecipe.image}
               alt="recipeImage"
-              className="w-full h-full object-cover rounded-2xl absolute"
+              className="
+              max-sm:w-full max-sm:h-full max-sm:object-cover max-sm:rounded-2xl max-sm:absolute
+              2xl:w-full 2xl:h-full 2xl:object-cover 2xl:rounded-2xl 2xl:absolute
+              "
             />
           ) : (
-            <div className="flex flex-col items-center hover:cursor-pointer">
+            <div className="
+            max-sm:flex max-sm:flex-col max-sm:items-center max-sm:hover:cursor-pointer
+            2xl:flex 2xl:flex-col 2xl:items-center 2xl:hover:cursor-pointer
+            ">
               <svg
                 width="64"
                 height="64"
@@ -98,26 +122,29 @@ const addrecipe = () => {
                 <path
                   d="M50.6667 8H13.3333C10.3878 8 8 10.3878 8 13.3333V50.6667C8 53.6122 10.3878 56 13.3333 56H50.6667C53.6122 56 56 53.6122 56 50.6667V13.3333C56 10.3878 53.6122 8 50.6667 8Z"
                   stroke="#666666"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M22.6667 26.6666C24.8759 26.6666 26.6667 24.8758 26.6667 22.6666C26.6667 20.4575 24.8759 18.6666 22.6667 18.6666C20.4576 18.6666 18.6667 20.4575 18.6667 22.6666C18.6667 24.8758 20.4576 26.6666 22.6667 26.6666Z"
                   stroke="#666666"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M55.9999 40L42.6666 26.6666L13.3333 56"
                   stroke="#666666"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
-              <p className="font-air font-medium text-[24px] text-[#666666]">
+              <p className="
+              max-sm:font-air max-sm:font-medium max-sm:text-[24px] max-sm:text-[#666666]
+              2xl:font-air 2xl:font-medium 2xl:text-[24px] 2xl:text-[#666666]
+              ">
                 Add Photo
               </p>
             </div>
@@ -125,21 +152,33 @@ const addrecipe = () => {
           <input
             type="file"
             accept="image/*"
-            className="hidden"
+            className="
+            max-sm:hidden
+            2xl:hidden
+            "
             onChange={handleUploadImage}
           />
         </label>
-        <div className="mx-auto w-[1300px] h-[100px] mt-12 rounded-2xl">
+        <div className="
+        max-sm:mx-auto max-sm:w-[100%] max-sm:h-[50px] max-sm:mt-10 max-sm:rounded-2xl
+        2xl:mx-auto 2xl:w-[1300px] 2xl:h-[100px] 2xl:mt-12 2xl:rounded-2xl
+        ">
           <input
             type="text"
             name="title"
             placeholder="Title"
-            className="w-full h-full bg-[#F6F5F4] pl-8 font-air font-medium text-[24px] text-[#666666] rounded-2xl outline-none"
+            className="
+            max-sm:w-full max-sm:h-full max-sm:bg-[#F6F5F4] max-sm:pl-5 max-sm:font-air max-sm:font-medium max-sm:text-[14px] max-sm:text-[#666666] max-sm:rounded-2xl max-sm:outline-none
+            2xl:w-full 2xl:h-full 2xl:bg-[#F6F5F4] 2xl:pl-8 2xl:font-air 2xl:font-medium 2xl:text-[24px] 2xl:text-[#666666] 2xl:rounded-2xl 2xl:outline-none
+            "
             value={formRecipe.title}
             onChange={handleChangeTitle}
           />
         </div>
-        <div className="mx-auto w-[1300px] h-[380px] mt-12 rounded-2xl">
+        <div className="
+        max-sm:mx-auto max-sm:w-[100%] max-sm:h-[240px] max-sm:mt-10 max-sm:rounded-2xl
+        2xl:mx-auto 2xl:w-[1300px] 2xl:h-[380px] 2xl:mt-12 2xl:rounded-2xl
+        ">
           <textarea
             name="description"
             id="description"
@@ -148,10 +187,16 @@ const addrecipe = () => {
             placeholder="Ingredients"
             value={formRecipe.description}
             onChange={handleChangeDescription}
-            className="w-full h-full bg-[#F6F5F4] pl-8 pt-8 font-air font-medium text-[24px] text-[#666666] rounded-2xl outline-none"
+            className="
+            max-sm:w-full max-sm:h-full max-sm:bg-[#F6F5F4] max-sm:pl-5 max-sm:pt-5 max-sm:font-air max-sm:font-medium max-sm:text-[14px] max-sm:text-[#666666] max-sm:rounded-2xl max-sm:outline-none
+            2xl:w-full 2xl:h-full 2xl:bg-[#F6F5F4] 2xl:pl-8 2xl:pt-8 2xl:font-air 2xl:font-medium 2xl:text-[24px] 2xl:text-[#666666] 2xl:rounded-2xl 2xl:outline-none
+            "
           ></textarea>
         </div>
-        <div className="mx-auto w-[426px] h-auto mt-12 rounded-2xl">
+        <div className="
+        max-sm:mx-auto max-sm:w-[100%] max-sm:mt-10 max-sm:rounded-2xl
+        2xl:mx-auto 2xl:w-[426px] 2xl:h-auto 2xl:mt-12 2xl:rounded-2xl
+        ">
           <ButtonSubmit onClick={handleClickPost}>Post</ButtonSubmit>
         </div>
       </div>

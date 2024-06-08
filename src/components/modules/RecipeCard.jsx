@@ -38,8 +38,8 @@ const RecipeCard = ({imageURL, recipeName="Recipe Name", id}) => {
         <img src={imgURL} alt={imageURL} className='absolute w-full h-full rounded-2xl object-cover' />
       )}
         <p className='
-        max-sm:w-[40%] max-sm:bg-[#A2A3A5AA] max-sm:rounded-md max-sm:font-air max-sm:font-medium max-sm:text-[18px] max-sm:text-[#3F3A3A] max-sm:ml-7 max-sm:mb-7 max-sm:relative
-        2xl:w-[191px] 2xl:font-air 2xl:font-medium 2xl:text-[32px] 2xl:text-[#3F3A3A] 2xl:bg-[#A2A3A5AA] 2xl:rounded-lg 2xl:ml-14 2xl:mb-14 2xl:relative
+        max-sm:w-[40%] max-sm:bg-[#A2A3A5AA] max-sm:pl-2 max-sm:rounded-md max-sm:font-air max-sm:font-medium max-sm:text-[18px] max-sm:text-[#3F3A3A] max-sm:ml-7 max-sm:mb-7 max-sm:relative
+        2xl:w-[191px] 2xl:font-air 2xl:font-medium 2xl:text-[32px] 2xl:text-[#3F3A3A] 2xl:bg-[#A2A3A5AA] 2xl:pl-2 2xl:rounded-lg 2xl:ml-14 2xl:mb-14 2xl:relative
         '>{recipeName}</p>
     </div>
   )

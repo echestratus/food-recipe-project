@@ -13,21 +13,11 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { useDispatch, useSelector } from "react-redux";
 
 export async function getServerSideProps() {
-  await store.dispatch(getAllRecipesAction())
-  const {recipes: allRecipes} = store.getState().getAllRecipes
+  await store.dispatch(getAllRecipesAction());
+  const { recipes: allRecipes } = store.getState().getAllRecipes;
   return {
     props: { recipesProps: allRecipes },
   };
-  // try {
-  //   const res = await axios.get(
-  //     `${process.env.NEXT_PUBLIC_API_URL}recipes?limit=60000`
-  //   );
-  //   return {
-  //     props: { recipesProps: res.data.data },
-  //   };
-  // } catch (error) {
-  //   console.log(error.response);
-  // }
 }
 
 const recipes = ({ recipesProps }) => {
@@ -51,6 +41,7 @@ const recipes = ({ recipesProps }) => {
     totalPage: Math.ceil(recipesProps.length / parseInt(limitSearchParams)),
   });
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     router.push({
       query: { page: pagination.currentPage, limit: pagination.limit },
@@ -65,22 +56,22 @@ const recipes = ({ recipesProps }) => {
 
   if (loading === true) {
     return (
-      <div className="bg-[#FFFFFF] relative">
-        <div className="container max-w-[1920px] mx-auto relative">
-          <header className="flex justify-center relative z-10">
+      <div className="2xl:bg-[#FFFFFF] 2xl:relative">
+        <div className="2xl:container 2xl:max-w-[1920px] 2xl:mx-auto 2xl:relative">
+          <header className="2xl:flex 2xl:justify-center 2xl:relative 2xl:z-10">
             <Navbar />
           </header>
         </div>
         {/* List Searched Recipes */}
-        <div className="w-[1720px] h-auto min-h-[1210px] mx-auto flex flex-wrap gap-24 mt-10 leading-none">
+        <div className="2xl:w-[1720px] 2xl:h-auto 2xl:min-h-[1210px] 2xl:mx-auto 2xl:flex 2xl:flex-wrap 2xl:gap-24 2xl:mt-10 2xl:leading-none">
           <Skeleton
             style={{ borderRadius: 10 }}
-            containerClassName="flex-1"
-            className="h-[500px]"
+            containerClassName="2xl:flex-1"
+            className="2xl:h-[500px]"
           />
         </div>
         {/* List Searched Recipes */}
-        <div className="w-[1720px] h-auto mx-auto mt-20 flex justify-center">
+        <div className="2xl:w-[1720px] 2xl:h-auto 2xl:mx-auto 2xl:mt-20 2xl:flex 2xl:justify-center">
           <Pagination pagination={pagination} setPagination={setPagination} />
         </div>
 
@@ -90,15 +81,25 @@ const recipes = ({ recipesProps }) => {
       </div>
     );
   }
+
   return (
     <div className="bg-[#FFFFFF] relative">
-      <div className="container max-w-[1920px] mx-auto relative">
-        <header className="flex justify-center relative z-10">
+      <div className="
+      max-sm:container max-sm:max-w-[640px] max-sm:mx-auto max-sm:relative
+      2xl:container 2xl:max-w-[1920px] 2xl:mx-auto 2xl:relative
+      ">
+        <header className="
+        max-sm:flex max-sm:justify-center max-sm:relative max-sm:z-10
+        2xl:flex 2xl:justify-center 2xl:relative 2xl:z-10
+        ">
           <Navbar />
         </header>
       </div>
       {/* List Searched Recipes */}
-      <div className="w-[1720px] h-auto  min-h-[1210px] mx-auto flex flex-wrap gap-24 mt-10">
+      <div className="
+      max-sm:w-[80%] max-sm:mx-auto max-sm:flex max-sm:flex-wrap max-sm:justify-center max-sm:gap-12
+      2xl:w-[1720px] 2xl:h-auto 2xl:min-h-[1210px] 2xl:mx-auto 2xl:flex 2xl:flex-wrap 2xl:gap-24 2xl:mt-10
+      ">
         {recipeList
           .slice(pagination.start, pagination.end)
           .map((recipe, index) => (
@@ -111,7 +112,10 @@ const recipes = ({ recipesProps }) => {
           ))}
       </div>
       {/* List Searched Recipes */}
-      <div className="w-[1720px] h-auto mx-auto mt-20 flex justify-center">
+      <div className="
+      max-sm:w-[80%] max-sm:mx-auto max-sm:mt-12 max-sm:flex max-sm:justify-center
+      2xl:w-[1720px] 2xl:h-auto 2xl:mx-auto 2xl:mt-20 2xl:flex 2xl:justify-center
+      ">
         <Pagination pagination={pagination} setPagination={setPagination} />
       </div>
 

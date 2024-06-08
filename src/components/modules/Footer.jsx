@@ -3,7 +3,7 @@ import React from 'react'
 const Footer = () => {
   return (
     <div className='
-    max-sm:w-full max-sm:h-[400px] max-sm:flex max-sm:justify-center max-sm:bg-[#EFC81A] max-sm:mt-64
+    max-sm:w-full max-sm:h-[400px] max-sm:flex max-sm:justify-center max-sm:bg-[#EFC81A] max-sm:mt-32
     2xl:w-full 2xl:h-[685px] 2xl:flex 2xl:justify-center 2xl:bg-[#EFC81A] 2xl:mt-64
     '>
         <div className='

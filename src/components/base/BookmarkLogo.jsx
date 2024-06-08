@@ -4,7 +4,10 @@ const BookmarkLogo = ({ isSaved, onClick }) => {
   return (
     <div>
       {isSaved === true ? (
-        <button onClick={onClick} className="bg-[#EFC81A] w-[52px] h-[52px] rounded-2xl flex justify-center items-center">
+        <button onClick={onClick} className="
+        max-sm:bg-[#EFC81A] max-sm:w-[45px] max-sm:h-[45px] max-sm:rounded-2xl max-sm:flex max-sm:justify-center max-sm:items-center
+        bg-[#EFC81A] w-[52px] h-[52px] rounded-2xl flex justify-center items-center
+        ">
           <svg
             width="24"
             height="28"
@@ -22,7 +25,10 @@ const BookmarkLogo = ({ isSaved, onClick }) => {
           </svg>
         </button>
       ) : (
-        <button onClick={onClick} className="bg-[#FFFFFF] w-[52px] h-[52px] rounded-2xl flex justify-center items-center">
+        <button onClick={onClick} className="
+        max-sm:bg-[#FFFFFF] max-sm:w-[45px] max-sm:h-[45px] max-sm:rounded-2xl max-sm:flex max-sm:justify-center max-sm:items-center
+        bg-[#FFFFFF] w-[52px] h-[52px] rounded-2xl flex justify-center items-center
+        ">
           <svg
             width="24"
             height="28"

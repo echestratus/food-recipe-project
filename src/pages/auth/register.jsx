@@ -25,11 +25,11 @@ const register = () => {
       [e.target.name]: e.target.value
     })
   }
-  const handleSubmit = () => {
-    if (userForm.password !== userForm.confirmPassword) {
-      alert("Password and Confirm Password should be the same")
-    } else {
-      dispatch(registerAction(userForm, router))
+  // const handleSubmit = () => {
+  //   if (userForm.password !== userForm.confirmPassword) {
+  //     alert("Password and Confirm Password should be the same")
+  //   } else {
+  //     dispatch(registerAction(userForm, router))
       // axios.post(`${process.env.NEXT_PUBLIC_API_URL}auth/register`, {
       //   email: userForm.email,
       //   password: userForm.password,
@@ -45,10 +45,15 @@ const register = () => {
       //   console.log(err.response.data.message);
       //   alert(`${err.response.data.message}`)
       // })
-    }
-  }
+  //   }
+  // }
   const afterSubmission = (e) => {
     e.preventDefault()
+    if (userForm.password !== userForm.confirmPassword) {
+      alert("Password and Confirm Password should be the same")
+    } else {
+      dispatch(registerAction(userForm, router))
+    }
   }
   return (
     <div className="
@@ -150,7 +155,7 @@ const register = () => {
               I agree to terms & conditions
             </label>
           </div>
-          <ButtonSubmit onClick={handleSubmit}>Register Account</ButtonSubmit>
+          <ButtonSubmit>Register Account</ButtonSubmit>
         </form>
         <p className="
           font-air font-medium text-[13px] text-[#999999] text-center mt-6

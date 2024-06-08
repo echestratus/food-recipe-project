@@ -24,8 +24,8 @@ const login = () => {
     });
   };
 
-  const handleSubmit = () => {
-    dispatch(loginAction(userForm, router))
+  // const handleSubmit = () => {
+    // dispatch(loginAction(userForm, router))
     // axios.post(`${process.env.NEXT_PUBLIC_API_URL}auth/login`, {
     //   email: userForm.email,
     //   password: userForm.password
@@ -41,10 +41,11 @@ const login = () => {
     //   console.log(err);
     //   alert(`${err.response.data.message}`);
     // });
-  };
+  // };
 
   const afterSubmission = (e) => {
     e.preventDefault();
+    dispatch(loginAction(userForm, router))
   };
 
   return (
@@ -120,7 +121,7 @@ const login = () => {
                 I agree to terms & conditions
               </label>
             </div>
-            <ButtonSubmit onClick={handleSubmit}>Log in</ButtonSubmit>
+            <ButtonSubmit>Log in</ButtonSubmit>
           </form>
           <p className="
           text-right font-air font-medium text-[12px] text-[#999999] p-0 mt-5

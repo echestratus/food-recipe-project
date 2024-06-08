@@ -4,7 +4,10 @@ const LikeLogo = ({isLiked, onClick}) => {
   return (
     <div>
         {isLiked === true ? (
-      <button onClick={onClick} className="bg-[#EFC81A] w-[52px] h-[52px] flex justify-center items-center rounded-2xl">
+      <button onClick={onClick} className="
+      max-sm:bg-[#EFC81A] max-sm:w-[45px] max-sm:h-[45px] max-sm:rounded-2xl max-sm:flex max-sm:justify-center max-sm:items-center
+      bg-[#EFC81A] w-[52px] h-[52px] flex justify-center items-center rounded-2xl
+      ">
         <svg
           width="36"
           height="36"
@@ -23,7 +26,10 @@ const LikeLogo = ({isLiked, onClick}) => {
       </button>
 
         ) : (
-            <button onClick={onClick} className="bg-[#FFFFFF] w-[52px] h-[52px] flex justify-center items-center rounded-2xl">
+            <button onClick={onClick} className="
+            max-sm:bg-[#FFFFFF] max-sm:w-[45px] max-sm:h-[45px] max-sm:rounded-2xl max-sm:flex max-sm:justify-center max-sm:items-center
+            bg-[#FFFFFF] w-[52px] h-[52px] flex justify-center items-center rounded-2xl
+            ">
         <svg
           width="36"
           height="36"
