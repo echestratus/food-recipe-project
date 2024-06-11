@@ -2,62 +2,76 @@ import Footer from "@/components/modules/Footer";
 import Navbar from "@/components/modules/Navbar";
 import ProfileRecipeCard from "@/components/modules/ProfileRecipeCard";
 import RecipeCard from "@/components/modules/RecipeCard";
+import { getLikedRecipesAction } from "@/configs/redux/actions/getLikedRecipesAction";
+import { getMyRecipeAction } from "@/configs/redux/actions/getMyRecipeAction";
+import { getProfileAction } from "@/configs/redux/actions/getProfileAction";
+import { getSavedRecipesAction } from "@/configs/redux/actions/getSavedRecipesAction";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { useDispatch, useSelector } from "react-redux";
 
 const profile = () => {
-  const [formProfile, setFormProfile] = useState({});
-  const [myRecipe, setMyRecipe] = useState([])
-  const [savedRecipe, setSavedRecipe] = useState([])
-  const [likedRecipe, setLikedRecipe] = useState([])
-  const [loading, setLoading] = useState(true);
+  // const [formProfile, setFormProfile] = useState({});
+  const {profile:formProfile, loading:loadingProfile} = useSelector((state) => state.getProfile)
+  // const [myRecipe, setMyRecipe] = useState([])
+  const {recipes:myRecipe, loading:loadingMyRecipe} = useSelector((state) => state.getMyRecipe)
+  // const [savedRecipe, setSavedRecipe] = useState([])
+  const {recipes:savedRecipe, loading:loadingSavedRecipe} = useSelector((state) => state.getSavedRecipes)
+  // const [likedRecipe, setLikedRecipe] = useState([])
+  const {recipes:likedRecipe, loading:loadingLikedRecipe} = useSelector((state) => state.getLikedRecipes)
+  // const [loading, setLoading] = useState(true);
   const [switchRecipe, setSwitchRecipe] = useState("")
+  const dispatch = useDispatch()
   useEffect(() => {
-    axios.all([
-      axios.get(`${process.env.NEXT_PUBLIC_API_URL}users/profile`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      }),
-      axios.get(`${process.env.NEXT_PUBLIC_API_URL}recipes/self`, {
-        headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
-        }
-      }),
-      axios.get(`${process.env.NEXT_PUBLIC_API_URL}recipes/save`, {
-          headers: {
-              'Authorization': `Bearer ${localStorage.getItem('token')}`
-          }
-      }),
-      axios.get(`${process.env.NEXT_PUBLIC_API_URL}recipes/like`, {
-          headers: {
-              'Authorization': `Bearer ${localStorage.getItem('token')}`
-          }
-      })
-  ])
-  .then(axios.spread(function (profile, recipe, saved, liked) {
-      console.log(profile.data.data);
-      setFormProfile(profile.data.data)
+    dispatch(getProfileAction())
+    dispatch(getMyRecipeAction())
+    dispatch(getSavedRecipesAction())
+    dispatch(getLikedRecipesAction())
+  //   axios.all([
+  //     axios.get(`${process.env.NEXT_PUBLIC_API_URL}users/profile`, {
+  //       headers: {
+  //         Authorization: `Bearer ${localStorage.getItem("token")}`,
+  //       },
+  //     }),
+  //     axios.get(`${process.env.NEXT_PUBLIC_API_URL}recipes/self`, {
+  //       headers: {
+  //         'Authorization': `Bearer ${localStorage.getItem('token')}`
+  //       }
+  //     }),
+  //     axios.get(`${process.env.NEXT_PUBLIC_API_URL}recipes/save`, {
+  //         headers: {
+  //             'Authorization': `Bearer ${localStorage.getItem('token')}`
+  //         }
+  //     }),
+  //     axios.get(`${process.env.NEXT_PUBLIC_API_URL}recipes/like`, {
+  //         headers: {
+  //             'Authorization': `Bearer ${localStorage.getItem('token')}`
+  //         }
+  //     })
+  // ])
+  // .then(axios.spread(function (profile, recipe, saved, liked) {
+  //     console.log(profile.data.data);
+  //     setFormProfile(profile.data.data)
 
-  // Search for myRecipe based on author id
-    console.log(recipe.data.data);
-    setMyRecipe(recipe.data.data)
+  // // Search for myRecipe based on author id
+  //   console.log(recipe.data.data);
+  //   setMyRecipe(recipe.data.data)
 
-    console.log(saved.data.data);
-    setSavedRecipe(saved.data.data)
+  //   console.log(saved.data.data);
+  //   setSavedRecipe(saved.data.data)
 
-    console.log(liked.data.data);
-    setLikedRecipe(liked.data.data)
+  //   console.log(liked.data.data);
+  //   setLikedRecipe(liked.data.data)
     
     
-    setLoading(false);
-  }))
-  .catch((err) => {
-      console.log(err.response);
-      setLoading(false)
-  })
+  //   setLoading(false);
+  // }))
+  // .catch((err) => {
+  //     console.log(err.response);
+  //     setLoading(false)
+  // })
   }, []);
 
   const switchShowedRecipe = () => {
@@ -102,7 +116,7 @@ const profile = () => {
       </div>
     )
   }
-  if (loading) {
+  if (loadingProfile || loadingMyRecipe || loadingLikedRecipe || loadingSavedRecipe) {
     return (
       <div className="bg-[#FFFFFF]">
         <div className="

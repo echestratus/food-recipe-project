@@ -1,37 +1,51 @@
 import ButtonSubmit from "@/components/base/ButtonSubmit";
 import Footer from "@/components/modules/Footer";
 import Navbar from "@/components/modules/Navbar";
+import { addRecipeAction } from "@/configs/redux/actions/addRecipeAction";
+import { uploadImageAction } from "@/configs/redux/actions/uploadImageAction";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const addrecipe = () => {
+  const {imageURL} = useSelector((state) => state.uploadImage)
   const [formRecipe, setFormRecipe] = useState({
     title: "",
     description: "",
     image: "",
   });
+  const dispatch = useDispatch()
 
-  const handleUploadImage = (e) => {
-    const file = e.target.files[0];
-    const formData = new FormData();
-    formData.append("file", file);
-    axios
-      .post(`${process.env.NEXT_PUBLIC_API_URL}upload`, formData, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      })
-      .then((res) => {
-        const { file_url } = res.data.data;
-        setFormRecipe({
-          ...formRecipe,
-          image: file_url,
-        });
-      })
-      .catch((err) => {
-        console.log(err.response);
-        alert(`Failed to upload image`);
-      });
+  useEffect(()=>{
+    setFormRecipe({
+      ...formRecipe,
+      image: imageURL
+    })
+  },[imageURL])
+
+  const handleUploadImage = (e, setFormRecipe) => {
+    dispatch(uploadImageAction(e, setFormRecipe))
+
+    // const file = e.target.files[0];
+    // const formData = new FormData();
+    // formData.append("file", file);
+    // axios
+    //   .post(`${process.env.NEXT_PUBLIC_API_URL}upload`, formData, {
+    //     headers: {
+    //       Authorization: `Bearer ${localStorage.getItem("token")}`,
+    //     },
+    //   })
+    //   .then((res) => {
+    //     const { file_url } = res.data.data;
+    //     setFormRecipe({
+    //       ...formRecipe,
+    //       image: file_url,
+    //     });
+    //   })
+    //   .catch((err) => {
+    //     console.log(err.response);
+    //     alert(`Failed to upload image`);
+    //   });
   };
 
   const handleChangeTitle = (e) => {
@@ -49,32 +63,33 @@ const addrecipe = () => {
   };
 
   const handleClickPost = () => {
-    axios
-      .post(
-        `${process.env.NEXT_PUBLIC_API_URL}recipes/`,
-        {
-          title: formRecipe.title,
-          description: formRecipe.description,
-          image: formRecipe.image,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      )
-      .then((res) => {
-        alert(res.data.message);
-        setFormRecipe({
-          title: "",
-          description: "",
-          image: "",
-        });
-      })
-      .catch((err) => {
-        console.log(err.response);
-        alert(`Failed to post recipe`);
-      });
+    dispatch(addRecipeAction(formRecipe, setFormRecipe))
+    // axios
+    //   .post(
+    //     `${process.env.NEXT_PUBLIC_API_URL}recipes/`,
+    //     {
+    //       title: formRecipe.title,
+    //       description: formRecipe.description,
+    //       image: formRecipe.image,
+    //     },
+    //     {
+    //       headers: {
+    //         Authorization: `Bearer ${localStorage.getItem("token")}`,
+    //       },
+    //     }
+    //   )
+    //   .then((res) => {
+    //     alert(res.data.message);
+    //     setFormRecipe({
+    //       title: "",
+    //       description: "",
+    //       image: "",
+    //     });
+    //   })
+    //   .catch((err) => {
+    //     console.log(err.response);
+    //     alert(`Failed to post recipe`);
+    //   });
   };
 
   return (
