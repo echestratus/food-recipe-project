@@ -85,11 +85,11 @@ const recipes = ({ recipesProps }) => {
   return (
     <div className="bg-[#FFFFFF] relative">
       <div className="
-      max-sm:container max-sm:max-w-[640px] max-sm:mx-auto max-sm:relative
+      max-lg:container max-lg:max-w-[1024px] max-lg:mx-auto max-lg:relative
       2xl:container 2xl:max-w-[1920px] 2xl:mx-auto 2xl:relative
       ">
         <header className="
-        max-sm:flex max-sm:justify-center max-sm:relative max-sm:z-10
+        max-lg:flex max-lg:justify-center max-lg:relative max-lg:z-10
         2xl:flex 2xl:justify-center 2xl:relative 2xl:z-10
         ">
           <Navbar />
@@ -97,7 +97,7 @@ const recipes = ({ recipesProps }) => {
       </div>
       {/* List Searched Recipes */}
       <div className="
-      max-sm:w-[80%] max-sm:mx-auto max-sm:flex max-sm:flex-wrap max-sm:justify-center max-sm:gap-12
+      max-lg:w-[80%] max-lg:mx-auto max-lg:flex max-lg:flex-wrap max-lg:justify-center max-lg:gap-12
       2xl:w-[1720px] 2xl:h-auto 2xl:min-h-[1210px] 2xl:mx-auto 2xl:flex 2xl:flex-wrap 2xl:gap-24 2xl:mt-10
       ">
         {recipeList
@@ -113,7 +113,7 @@ const recipes = ({ recipesProps }) => {
       </div>
       {/* List Searched Recipes */}
       <div className="
-      max-sm:w-[80%] max-sm:mx-auto max-sm:mt-12 max-sm:flex max-sm:justify-center
+      max-lg:w-[80%] max-lg:mx-auto max-lg:mt-12 max-lg:flex max-lg:justify-center
       2xl:w-[1720px] 2xl:h-auto 2xl:mx-auto 2xl:mt-20 2xl:flex 2xl:justify-center
       ">
         <Pagination pagination={pagination} setPagination={setPagination} />

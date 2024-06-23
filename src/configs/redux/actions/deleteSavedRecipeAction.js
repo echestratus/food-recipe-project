@@ -1,4 +1,5 @@
 import axios from "axios"
+import Cookies from "js-cookie"
 
 export const deleteSavedRecipeAction = (router) => (dispatch) => {
     dispatch({
@@ -7,7 +8,7 @@ export const deleteSavedRecipeAction = (router) => (dispatch) => {
 
     axios.get(`${process.env.NEXT_PUBLIC_API_URL}recipes/save`, {
         headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`
+            'Authorization': `Bearer ${Cookies.get('token')}`
         }
     })
     .then((saved) => {
@@ -15,7 +16,7 @@ export const deleteSavedRecipeAction = (router) => (dispatch) => {
             if (saved.data.data[index].recipe_id === router.query.id) {
                 axios.delete(`${process.env.NEXT_PUBLIC_API_URL}recipes/save/${saved.data.data[index].id}`, {
                     headers: {
-                        'Authorization': `Bearer ${localStorage.getItem('token')}`
+                        'Authorization': `Bearer ${Cookies.get('token')}`
                     }
                 })
                 .then((res) => {

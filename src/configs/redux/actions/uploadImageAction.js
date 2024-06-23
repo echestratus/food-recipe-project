@@ -1,4 +1,5 @@
 import axios from "axios";
+import Cookies from "js-cookie";
 
 export const uploadImageAction = (e) => (dispatch) => {
     dispatch({
@@ -10,7 +11,7 @@ export const uploadImageAction = (e) => (dispatch) => {
     axios
       .post(`${process.env.NEXT_PUBLIC_API_URL}upload`, formData, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          Authorization: `Bearer ${Cookies.get('token')}`,
         },
       })
       .then((res) => {

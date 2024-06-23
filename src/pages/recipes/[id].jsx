@@ -5,6 +5,7 @@ import LikeLogo from "@/components/base/LikeLogo";
 import Footer from "@/components/modules/Footer";
 import Navbar from "@/components/modules/Navbar";
 import axios from "axios";
+import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import Skeleton from "react-loading-skeleton";
@@ -38,12 +39,12 @@ const ProductDetail = () => {
           axios.get(`${process.env.NEXT_PUBLIC_API_URL}recipes/${router.query.id}`),
           axios.get(`${process.env.NEXT_PUBLIC_API_URL}recipes/save`, {
               headers: {
-                  'Authorization': `Bearer ${localStorage.getItem('token')}`
+                  'Authorization': `Bearer ${Cookies.get('token')}`
               }
           }),
           axios.get(`${process.env.NEXT_PUBLIC_API_URL}recipes/like`, {
               headers: {
-                  'Authorization': `Bearer ${localStorage.getItem('token')}`
+                  'Authorization': `Bearer ${Cookies.get('token')}`
               }
           })
       ])
@@ -94,7 +95,7 @@ const ProductDetail = () => {
               recipe_id: router.query.id
           }, {
               headers: {
-                  'Authorization': `Bearer ${localStorage.getItem('token')}`
+                  'Authorization': `Bearer ${Cookies.get('token')}`
               }
           })
           .then((res) => {
@@ -109,7 +110,7 @@ const ProductDetail = () => {
           setIsSaved(false)
           axios.get(`${process.env.NEXT_PUBLIC_API_URL}recipes/save`, {
               headers: {
-                  'Authorization': `Bearer ${localStorage.getItem('token')}`
+                  'Authorization': `Bearer ${Cookies.get('token')}`
               }
           })
           .then((saved) => {
@@ -117,7 +118,7 @@ const ProductDetail = () => {
                   if (saved.data.data[index].recipe_id === router.query.id) {
                       axios.delete(`${process.env.NEXT_PUBLIC_API_URL}recipes/save/${saved.data.data[index].id}`, {
                           headers: {
-                              'Authorization': `Bearer ${localStorage.getItem('token')}`
+                              'Authorization': `Bearer ${Cookies.get('token')}`
                           }
                       })
                       .then((res) => {
@@ -149,7 +150,7 @@ const ProductDetail = () => {
               recipe_id: router.query.id
           }, {
               headers: {
-                  'Authorization': `Bearer ${localStorage.getItem('token')}`
+                  'Authorization': `Bearer ${Cookies.get('token')}`
               }
           })
           .then((res) => {
@@ -164,7 +165,7 @@ const ProductDetail = () => {
           setIsLiked(false)
           axios.get(`${process.env.NEXT_PUBLIC_API_URL}recipes/like`, {
               headers: {
-                  'Authorization': `Bearer ${localStorage.getItem('token')}`
+                  'Authorization': `Bearer ${Cookies.get('token')}`
               }
           })
           .then((liked) => {
@@ -172,7 +173,7 @@ const ProductDetail = () => {
                   if (liked.data.data[index].recipe_id === router.query.id) {
                       axios.delete(`${process.env.NEXT_PUBLIC_API_URL}recipes/like/${liked.data.data[index].id}`, {
                           headers: {
-                              'Authorization': `Bearer ${localStorage.getItem('token')}`
+                              'Authorization': `Bearer ${Cookies.get('token')}`
                           }
                       })
                       .then((res) => {
@@ -205,7 +206,7 @@ const ProductDetail = () => {
           </header>
         </div>
         <div className="
-        max-sm:w-[80%] max-sm:h-auto max-sm:min-h-[1210px] max-sm:mx-auto max-sm:mt-10
+        max-lg:w-[80%] max-lg:h-auto max-lg:min-h-[1210px] max-lg:mx-auto max-lg:mt-10
         w-[1720px] h-auto min-h-[1210px] mx-auto mt-10
         ">
           <Skeleton className="h-[700px]" />
@@ -217,7 +218,7 @@ const ProductDetail = () => {
   return (
     <div className="bg-[#FFFFFF]">
       <div className="
-      max-sm:container max-sm:max-w-[640px] max-sm:mx-auto
+      max-lg:container max-lg:max-w-[1024px] max-lg:mx-auto
       container max-w-[1920px] mx-auto
       ">
         <header className="flex justify-center">
@@ -225,11 +226,11 @@ const ProductDetail = () => {
         </header>
       </div>
       <div className="
-      max-sm:w-[80%] max-sm:h-auto max-sm:min-h-[1210px] max-sm:mx-auto max-sm:mt-10
+      max-lg:w-[80%] max-lg:h-auto max-lg:min-h-[1210px] max-lg:mx-auto max-lg:mt-10
       w-[1720px] h-auto min-h-[1210px] mx-auto mt-10
       ">
         <p className="
-        max-sm:font-air max-sm:font-medium max-sm:text-[30px] max-sm:text-[#2E266F] max-sm:text-center max-sm:mb-10
+        max-lg:font-air max-lg:font-medium max-lg:text-[30px] max-lg:text-[#2E266F] max-lg:text-center max-lg:mb-10
         font-air font-medium text-[72px] text-[#2E266F] text-center mb-20
         ">
           {detailRecipe.title}
@@ -240,7 +241,7 @@ const ProductDetail = () => {
           <div
             style={{ "--image-recipe": `url(${detailRecipe.image})` }}
             className="
-            max-sm:w-[100%] max-sm:h-[300px] max-sm:flex max-sm:justify-end max-sm:items-end max-sm:gap-4 max-sm:bg-[image:var(--image-recipe)] max-sm:bg-cover max-sm:rounded-2xl max-sm:mx-auto max-sm:pb-5 max-sm:pr-5
+            max-lg:w-[100%] max-lg:h-[300px] max-lg:flex max-lg:justify-end max-lg:items-end max-lg:gap-4 max-lg:bg-[image:var(--image-recipe)] max-lg:bg-cover max-lg:rounded-2xl max-lg:mx-auto max-lg:pb-5 max-lg:pr-5
             2xl:w-[1082px] 2xl:h-[700px] 2xl:flex 2xl:justify-end 2xl:items-end 2xl:gap-4 2xl:bg-[image:var(--image-recipe)] 2xl:bg-cover 2xl:rounded-2xl 2xl:mx-auto 2xl:pb-10 2xl:pr-10
             "
           >
@@ -251,7 +252,7 @@ const ProductDetail = () => {
           <div
             style={{ "--image-recipe": `url(${imgURL})` }}
             className="
-            max-sm:w-[300px] max-sm:h-[150px] max-sm:flex max-sm:justify-end max-sm:items-end max-sm:gap-4 max-sm:bg-[image:var(--image-recipe)] max-sm:bg-cover max-sm:rounded-2xl max-sm:mx-auto max-sm:pb-10 max-sm:pr-10
+            max-lg:w-[300px] max-lg:h-[150px] max-lg:flex max-lg:justify-end max-lg:items-end max-lg:gap-4 max-lg:bg-[image:var(--image-recipe)] max-lg:bg-cover max-lg:rounded-2xl max-lg:mx-auto max-lg:pb-10 max-lg:pr-10
             2xl:w-[1082px] 2xl:h-[700px] 2xl:flex 2xl:justify-end 2xl:items-end 2xl:gap-4 2xl:bg-[image:var(--image-recipe)] 2xl:bg-cover 2xl:rounded-2xl 2xl:mx-auto 2xl:pb-10 2xl:pr-10
             "
           >
@@ -264,26 +265,26 @@ const ProductDetail = () => {
         <div className="
         2xl:pl-52">
           <p className="
-          max-sm:font-air max-sm:font-medium max-sm:text-[24px] max-sm:text-[#3F3A3A] max-sm:mt-24
+          max-lg:font-air max-lg:font-medium max-lg:text-[24px] max-lg:text-[#3F3A3A] max-lg:mt-24
           font-air font-medium text-[48px] text-[#3F3A3A] mt-24
           ">
             Ingredients
           </p>
           <p className="
-          max-sm:font-inter max-sm:font-light max-sm:text-[15px] max-sm:text-[#000000] max-sm:whitespace-pre-wrap max-sm:mt-10
+          max-lg:font-inter max-lg:font-light max-lg:text-[15px] max-lg:text-[#000000] max-lg:whitespace-pre-wrap max-lg:mt-10
           font-inter font-light text-[36px] text-[#000000] whitespace-pre-wrap mt-10
           ">
             {detailRecipe.description}
           </p>
           <p className="
-          max-sm:font-air max-sm:font-medium max-sm:text-[24px] max-sm:text-[#3F3A3A] max-sm:mt-24
+          max-lg:font-air max-lg:font-medium max-lg:text-[24px] max-lg:text-[#3F3A3A] max-lg:mt-24
           font-air font-medium text-[48px] text-[#3F3A3A] mt-24
           ">
             Video Step
           </p>
           <div className="flex flex-col gap-12 mt-16">
             <button className="
-            max-sm:flex max-sm:justify-center max-sm:items-center max-sm:bg-[#EFC81A] max-sm:w-[200px] max-sm:h-[80px] max-sm:rounded-2xl
+            max-lg:flex max-lg:justify-center max-lg:items-center max-lg:bg-[#EFC81A] max-lg:w-[200px] max-lg:h-[80px] max-lg:rounded-2xl
             flex justify-center items-center bg-[#EFC81A] w-[411.27px] h-[93.01px] rounded-2xl
             ">
               <svg
@@ -303,7 +304,7 @@ const ProductDetail = () => {
               </svg>
             </button>
             <button className="
-            max-sm:flex max-sm:justify-center max-sm:items-center max-sm:bg-[#EFC81A] max-sm:w-[200px] max-sm:h-[80px] max-sm:rounded-2xl
+            max-lg:flex max-lg:justify-center max-lg:items-center max-lg:bg-[#EFC81A] max-lg:w-[200px] max-lg:h-[80px] max-lg:rounded-2xl
             flex justify-center items-center bg-[#EFC81A] w-[411.27px] h-[93.01px] rounded-2xl
             ">
               <svg
@@ -323,7 +324,7 @@ const ProductDetail = () => {
               </svg>
             </button>
             <button className="
-            max-sm:flex max-sm:justify-center max-sm:items-center max-sm:bg-[#EFC81A] max-sm:w-[200px] max-sm:h-[80px] max-sm:rounded-2xl
+            max-lg:flex max-lg:justify-center max-lg:items-center max-lg:bg-[#EFC81A] max-lg:w-[200px] max-lg:h-[80px] max-lg:rounded-2xl
             flex justify-center items-center bg-[#EFC81A] w-[411.27px] h-[93.01px] rounded-2xl
             ">
               <svg
@@ -343,7 +344,7 @@ const ProductDetail = () => {
               </svg>
             </button>
             <button className="
-            max-sm:flex max-sm:justify-center max-sm:items-center max-sm:bg-[#EFC81A] max-sm:w-[200px] max-sm:h-[80px] max-sm:rounded-2xl
+            max-lg:flex max-lg:justify-center max-lg:items-center max-lg:bg-[#EFC81A] max-lg:w-[200px] max-lg:h-[80px] max-lg:rounded-2xl
             flex justify-center items-center bg-[#EFC81A] w-[411.27px] h-[93.01px] rounded-2xl
             ">
               <svg
@@ -367,7 +368,7 @@ const ProductDetail = () => {
 
         {/* Send Comment Section */}
         <div className="
-        max-sm:flex max-sm:flex-col max-sm:justify-center max-sm:items-center max-sm:mt-12 max-sm:gap-10
+        max-lg:flex max-lg:flex-col max-lg:justify-center max-lg:items-center max-lg:mt-12 max-lg:gap-10
         flex flex-col justify-center items-center mt-36 gap-10
         ">
           <textarea
@@ -377,11 +378,11 @@ const ProductDetail = () => {
             rows="10"
             placeholder="Comment"
             className="
-            max-sm:pl-2 max-sm:pt-2 max-sm:w-[100%] max-sm:h-[380px] max-sm:bg-[#F6F5F4] max-sm:outline-none max-sm:rounded-2xl max-sm:mx-auto max-sm:font-air max-sm:font-medium max-sm:text-[15px] max-sm:text-[#666666] max-sm:placeholder:font-air max-sm:placeholder:font-medium max-sm:placeholder:text-[15px] max-sm:placeholder:text-[#666666]
+            max-lg:pl-2 max-lg:pt-2 max-lg:w-[100%] max-lg:h-[380px] max-lg:bg-[#F6F5F4] max-lg:outline-none max-lg:rounded-2xl max-lg:mx-auto max-lg:font-air max-lg:font-medium max-lg:text-[15px] max-lg:text-[#666666] max-lg:placeholder:font-air max-lg:placeholder:font-medium max-lg:placeholder:text-[15px] max-lg:placeholder:text-[#666666]
             pl-6 pt-6 w-[1300px] h-[380px] bg-[#F6F5F4] outline-none rounded-2xl mx-auto font-air font-medium text-[24px] text-[#666666] placeholder:font-air placeholder:font-medium placeholder:text-[24px] placeholder:text-[#666666]"
           ></textarea>
           <div className="
-          max-sm:w-full
+          max-lg:w-full
           w-[426px]
           ">
             <ButtonSubmit>Send</ButtonSubmit>
@@ -391,11 +392,11 @@ const ProductDetail = () => {
 
         {/* List of Comments */}
         <div className="
-        max-sm:pl-5
+        max-lg:pl-5
         pl-52
         ">
         <p className="
-        max-sm:font-air max-sm:font-medium max-sm:text-[24px] max-sm:text-[#3F3A3A] max-sm:mt-24
+        max-lg:font-air max-lg:font-medium max-lg:text-[24px] max-lg:text-[#3F3A3A] max-lg:mt-24
         font-air font-medium text-[48px] text-[#3F3A3A] mt-24">
             Comment
           </p>

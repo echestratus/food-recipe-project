@@ -1,4 +1,5 @@
 import axios from "axios"
+import Cookies from "js-cookie"
 
 export const getMyRecipeAction = () => (dispatch) => {
     dispatch({
@@ -6,7 +7,7 @@ export const getMyRecipeAction = () => (dispatch) => {
     })
     axios.get(`${process.env.NEXT_PUBLIC_API_URL}recipes/self`, {
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
+          'Authorization': `Bearer ${Cookies.get('token')}`
         }
       })
     .then((res) => {

@@ -1,4 +1,6 @@
 import axios from "axios";
+import Cookies from "js-cookie";
+import { NextResponse } from "next/server";
 
 export const loginAction = (userForm, router) => (dispatch) => {
     dispatch({
@@ -10,13 +12,15 @@ export const loginAction = (userForm, router) => (dispatch) => {
       })
       .then((res) => {
         console.log(res.data.data);
+        const response = NextResponse.next()
         dispatch({
             type: "LOGIN_SUCCEED"
         })
-        localStorage.setItem('token', res.data.data.token);
-        localStorage.setItem('refreshToken', res.data.data.refreshToken);
+        Cookies.set('token', res.data.data.token, { expires: 1 })
+        Cookies.set('refreshToken', res.data.data.refreshToken, { expires: 1 })
         alert(`${res.data.message}`);
         router.push('/');
+        return response
       })
       .catch((err) => {
         console.log(err);

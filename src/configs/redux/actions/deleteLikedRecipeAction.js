@@ -1,4 +1,5 @@
 import axios from "axios";
+import Cookies from "js-cookie";
 
 export const deleteLikedRecipeAction = (router) => (dispatch) => {
     dispatch({
@@ -6,7 +7,7 @@ export const deleteLikedRecipeAction = (router) => (dispatch) => {
     })
     axios.get(`${process.env.NEXT_PUBLIC_API_URL}recipes/like`, {
         headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`
+            'Authorization': `Bearer ${Cookies.get('token')}`
         }
     })
     .then((liked) => {
@@ -14,7 +15,7 @@ export const deleteLikedRecipeAction = (router) => (dispatch) => {
             if (liked.data.data[index].recipe_id === router.query.id) {
                 axios.delete(`${process.env.NEXT_PUBLIC_API_URL}recipes/like/${liked.data.data[index].id}`, {
                     headers: {
-                        'Authorization': `Bearer ${localStorage.getItem('token')}`
+                        'Authorization': `Bearer ${Cookies.get('token')}`
                     }
                 })
                 .then((res) => {

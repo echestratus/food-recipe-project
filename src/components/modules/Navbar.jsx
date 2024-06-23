@@ -1,25 +1,35 @@
 import { getProfileAction } from '@/configs/redux/actions/getProfileAction'
 import axios from 'axios'
+import Cookies from 'js-cookie'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 const Navbar = () => {
     const pathname = usePathname()
+    const router = useRouter()
     // const [isLogin, setIsLogin] = useState(false)
     const {profile, loading, login: isLogin} = useSelector((state) => state.getProfile)
     const dispatch = useDispatch()
     useEffect(() => {
       dispatch(getProfileAction())
     }, [])
+    
+    const handleLogout = () => {
+      Cookies.remove('token')
+      Cookies.remove('refreshToken')
+      router.reload()
+    }
+
   return (
     <nav className='
-    max-sm:flex max-sm:w-[95%] max-sm:max-w-[640px] max-sm:bg-transparent max-sm:justify-between max-sm:items-center max-sm:py-7
+    max-lg:flex max-lg:w-[95%] max-lg:max-w-[1024px] max-lg:bg-transparent max-lg:justify-between max-lg:items-center max-lg:py-7
     2xl:flex 2xl:w-[1720px] 2xl:h-auto 2xl:bg-transparent 2xl:justify-between 2xl:items-center 2xl:py-7
     '>
       <ul className='
-      max-sm:flex max-sm:items-center max-sm:gap-6 max-sm:font-air max-sm:text-[14px] max-sm:font-medium max-sm:text-[#2E266F]
+      max-lg:flex max-lg:items-center max-lg:gap-6 max-lg:font-air max-lg:text-[14px] max-lg:font-medium max-lg:text-[#2E266F]
       2xl:flex 2xl:items-center 2xl:gap-20 2xl:font-air 2xl:text-[18px] 2xl:font-medium 2xl:text-[#2E266F]
       '>
         <li>
@@ -62,19 +72,33 @@ const Navbar = () => {
           )}
         </li>
       </ul>
-      {isLogin === false && (
+      {isLogin === false ? (
       <div className='
-      max-sm:flex max-sm:items-center max-sm:gap-2
+      max-lg:flex max-lg:items-center max-lg:gap-2
       2xl:flex 2xl:items-center 2xl:gap-3
       '>
         <img id='user-icon' src="/user-icon.png" alt="user-icon" className='
-        max-sm:w-[36px] max-sm:h-[36px]
+        max-lg:w-[36px] max-lg:h-[36px]
         2xl:w-[52px] 2xl:h-[52px]
         ' />
         <label htmlFor="user-icon" className='
-        max-sm:font-air max-sm:font-normal max-sm:text-[14px] max-sm:text-[#2E266F]
+        max-lg:font-air max-lg:font-normal max-lg:text-[14px] max-lg:text-[#2E266F]
         2xl:font-air 2xl:font-normal 2xl:text-[16px] 2xl:text-[#FFFFFF]
         '><Link href="/auth/login" className={`${pathname !== '/' && '2xl:text-[#2E266F]'}`}>Login</Link></label>
+      </div>
+      ) : (
+        <div className='
+      max-lg:flex max-lg:items-center max-lg:gap-2
+      2xl:flex 2xl:items-center 2xl:gap-3
+      '>
+        <img id='user-icon' src="/user-icon.png" alt="user-icon" className='
+        max-lg:w-[36px] max-lg:h-[36px]
+        2xl:w-[52px] 2xl:h-[52px]
+        ' />
+        <label htmlFor="user-icon" className='
+        max-lg:font-air max-lg:font-normal max-lg:text-[14px] max-lg:text-[#2E266F] hover:cursor-pointer
+        2xl:font-air 2xl:font-normal 2xl:text-[16px] 2xl:text-[#FFFFFF]
+        ' onClick={handleLogout}>Logout</label>
       </div>
       )}
     </nav>

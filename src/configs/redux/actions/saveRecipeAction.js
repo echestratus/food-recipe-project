@@ -1,4 +1,5 @@
 import axios from "axios";
+import Cookies from "js-cookie";
 
 export const saveRecipeAction = (router) => (dispatch) => {
     dispatch({
@@ -8,7 +9,7 @@ export const saveRecipeAction = (router) => (dispatch) => {
         recipe_id: router.query.id
     }, {
         headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`
+            'Authorization': `Bearer ${Cookies.get('token')}`
         }
     })
     .then((res) => {

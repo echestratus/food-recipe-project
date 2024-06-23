@@ -1,4 +1,5 @@
 import axios from "axios";
+import Cookies from "js-cookie";
 
 export const addRecipeAction = (formRecipe, setFormRecipe) => (dispatch) => {
     dispatch({
@@ -14,7 +15,7 @@ export const addRecipeAction = (formRecipe, setFormRecipe) => (dispatch) => {
         },
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            Authorization: `Bearer ${Cookies.get('token')}`,
           },
         }
       )

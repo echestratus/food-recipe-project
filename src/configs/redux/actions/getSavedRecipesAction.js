@@ -1,3 +1,5 @@
+import Cookies from "js-cookie"
+
 const { default: axios } = require("axios")
 
 export const getSavedRecipesAction = () => (dispatch) => {
@@ -6,7 +8,7 @@ export const getSavedRecipesAction = () => (dispatch) => {
     })
     axios.get(`${process.env.NEXT_PUBLIC_API_URL}recipes/save`, {
         headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`
+            'Authorization': `Bearer ${Cookies.get('token')}`
         }
     })
     .then((res) => {

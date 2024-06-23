@@ -4,11 +4,14 @@ import Navbar from "@/components/modules/Navbar";
 import { addRecipeAction } from "@/configs/redux/actions/addRecipeAction";
 import { uploadImageAction } from "@/configs/redux/actions/uploadImageAction";
 import axios from "axios";
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const addrecipe = () => {
   const {imageURL} = useSelector((state) => state.uploadImage)
+  const {login: isLogin} = useSelector((state) => state.getProfile)
+  const router = useRouter()
   const [formRecipe, setFormRecipe] = useState({
     title: "",
     description: "",
@@ -17,10 +20,14 @@ const addrecipe = () => {
   const dispatch = useDispatch()
 
   useEffect(()=>{
-    setFormRecipe({
-      ...formRecipe,
-      image: imageURL
-    })
+    if (isLogin) {
+      setFormRecipe({
+        ...formRecipe,
+        image: imageURL
+      })
+    } else {
+      router.push('/auth/login')
+    }
   },[imageURL])
 
   const handleUploadImage = (e, setFormRecipe) => {
@@ -95,22 +102,22 @@ const addrecipe = () => {
   return (
     <div className="bg-[#FFFFFF]">
       <div className="
-      max-sm:container max-sm:max-w-[640px] max-sm:mx-auto
+      max-lg:container max-lg:max-w-[1024px] max-lg:mx-auto
       2xl:container 2xl:max-w-[1920px] 2xl:mx-auto
       ">
         <header className="
-        max-sm:flex max-sm:justify-center
+        max-lg:flex max-lg:justify-center
         2xl:flex 2xl:justify-center
         ">
           <Navbar />
         </header>
       </div>
       <div className="
-      max-sm:w-[80%] max-sm:mx-auto max-sm:mt-10
+      max-lg:w-[80%] max-lg:mx-auto max-lg:mt-10
       2xl:w-[1720px] 2xl:h-auto 2xl:min-h-[1210px] 2xl:mx-auto 2xl:mt-10
       ">
         <label className="
-        max-sm:w-[100%] max-sm:h-[240px] max-sm:mx-auto max-sm:bg-[#F6F5F4] max-sm:rounded-xl max-sm:flex max-sm:justify-center max-sm:items-center max-sm:relative
+        max-lg:w-[100%] max-lg:h-[240px] max-lg:mx-auto max-lg:bg-[#F6F5F4] max-lg:rounded-xl max-lg:flex max-lg:justify-center max-lg:items-center max-lg:relative
         2xl:w-[1300px] 2xl:h-[480px] 2xl:mx-auto 2xl:bg-[#F6F5F4] 2xl:rounded-2xl 2xl:flex 2xl:justify-center 2xl:items-center 2xl:relative
         ">
           {formRecipe.image ? (
@@ -118,13 +125,13 @@ const addrecipe = () => {
               src={formRecipe.image}
               alt="recipeImage"
               className="
-              max-sm:w-full max-sm:h-full max-sm:object-cover max-sm:rounded-2xl max-sm:absolute
+              max-lg:w-full max-lg:h-full max-lg:object-cover max-lg:rounded-2xl max-lg:absolute
               2xl:w-full 2xl:h-full 2xl:object-cover 2xl:rounded-2xl 2xl:absolute
               "
             />
           ) : (
             <div className="
-            max-sm:flex max-sm:flex-col max-sm:items-center max-sm:hover:cursor-pointer
+            max-lg:flex max-lg:flex-col max-lg:items-center max-lg:hover:cursor-pointer
             2xl:flex 2xl:flex-col 2xl:items-center 2xl:hover:cursor-pointer
             ">
               <svg
@@ -157,7 +164,7 @@ const addrecipe = () => {
                 />
               </svg>
               <p className="
-              max-sm:font-air max-sm:font-medium max-sm:text-[24px] max-sm:text-[#666666]
+              max-lg:font-air max-lg:font-medium max-lg:text-[24px] max-lg:text-[#666666]
               2xl:font-air 2xl:font-medium 2xl:text-[24px] 2xl:text-[#666666]
               ">
                 Add Photo
@@ -168,14 +175,14 @@ const addrecipe = () => {
             type="file"
             accept="image/*"
             className="
-            max-sm:hidden
+            max-lg:hidden
             2xl:hidden
             "
             onChange={handleUploadImage}
           />
         </label>
         <div className="
-        max-sm:mx-auto max-sm:w-[100%] max-sm:h-[50px] max-sm:mt-10 max-sm:rounded-2xl
+        max-lg:mx-auto max-lg:w-[100%] max-lg:h-[50px] max-lg:mt-10 max-lg:rounded-2xl
         2xl:mx-auto 2xl:w-[1300px] 2xl:h-[100px] 2xl:mt-12 2xl:rounded-2xl
         ">
           <input
@@ -183,7 +190,7 @@ const addrecipe = () => {
             name="title"
             placeholder="Title"
             className="
-            max-sm:w-full max-sm:h-full max-sm:bg-[#F6F5F4] max-sm:pl-5 max-sm:font-air max-sm:font-medium max-sm:text-[14px] max-sm:text-[#666666] max-sm:rounded-2xl max-sm:outline-none
+            max-lg:w-full max-lg:h-full max-lg:bg-[#F6F5F4] max-lg:pl-5 max-lg:font-air max-lg:font-medium max-lg:text-[14px] max-lg:text-[#666666] max-lg:rounded-2xl max-lg:outline-none
             2xl:w-full 2xl:h-full 2xl:bg-[#F6F5F4] 2xl:pl-8 2xl:font-air 2xl:font-medium 2xl:text-[24px] 2xl:text-[#666666] 2xl:rounded-2xl 2xl:outline-none
             "
             value={formRecipe.title}
@@ -191,7 +198,7 @@ const addrecipe = () => {
           />
         </div>
         <div className="
-        max-sm:mx-auto max-sm:w-[100%] max-sm:h-[240px] max-sm:mt-10 max-sm:rounded-2xl
+        max-lg:mx-auto max-lg:w-[100%] max-lg:h-[240px] max-lg:mt-10 max-lg:rounded-2xl
         2xl:mx-auto 2xl:w-[1300px] 2xl:h-[380px] 2xl:mt-12 2xl:rounded-2xl
         ">
           <textarea
@@ -203,13 +210,13 @@ const addrecipe = () => {
             value={formRecipe.description}
             onChange={handleChangeDescription}
             className="
-            max-sm:w-full max-sm:h-full max-sm:bg-[#F6F5F4] max-sm:pl-5 max-sm:pt-5 max-sm:font-air max-sm:font-medium max-sm:text-[14px] max-sm:text-[#666666] max-sm:rounded-2xl max-sm:outline-none
+            max-lg:w-full max-lg:h-full max-lg:bg-[#F6F5F4] max-lg:pl-5 max-lg:pt-5 max-lg:font-air max-lg:font-medium max-lg:text-[14px] max-lg:text-[#666666] max-lg:rounded-2xl max-lg:outline-none
             2xl:w-full 2xl:h-full 2xl:bg-[#F6F5F4] 2xl:pl-8 2xl:pt-8 2xl:font-air 2xl:font-medium 2xl:text-[24px] 2xl:text-[#666666] 2xl:rounded-2xl 2xl:outline-none
             "
           ></textarea>
         </div>
         <div className="
-        max-sm:mx-auto max-sm:w-[100%] max-sm:mt-10 max-sm:rounded-2xl
+        max-lg:mx-auto max-lg:w-[100%] max-lg:mt-10 max-lg:rounded-2xl
         2xl:mx-auto 2xl:w-[426px] 2xl:h-auto 2xl:mt-12 2xl:rounded-2xl
         ">
           <ButtonSubmit onClick={handleClickPost}>Post</ButtonSubmit>

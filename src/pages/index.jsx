@@ -70,13 +70,13 @@ export default function Home() {
       <div className="bg-[#FFF5EC] relative">
         <div
           className="
-        max-sm:container max-sm:max-w-[640px] max-sm:mx-auto max-sm:relative
+        max-lg:container max-lg:max-w-[1024px] max-lg:mx-auto max-lg:relative
         2xl:container 2xl:max-w-[1920px] 2xl:mx-auto 2xl:relative
         "
         >
           <header
             className="
-          max-sm:flex max-sm:justify-center max-sm:relative max-sm:z-10
+          max-lg:flex max-lg:justify-center max-lg:relative max-lg:z-10
           2xl:flex 2xl:justify-center 2xl:relative 2xl:z-10
           "
           >
@@ -85,7 +85,7 @@ export default function Home() {
         </div>
         <div
           className="
-        max-sm:hidden
+        max-lg:hidden
         2xl:w-[25%]  2xl:h-full 2xl:bg-[#EFC81A] 2xl:absolute 2xl:right-0 2xl:top-0
         "
         ></div>
@@ -93,13 +93,13 @@ export default function Home() {
         {searchedList.length === 0 ? (
           <div
             className="
-          max-sm:w-[80%] max-sm:flex max-sm:flex-col max-sm:mx-auto max-sm:container
+          max-lg:w-[80%] max-lg:flex max-lg:flex-col max-lg:mx-auto max-lg:container
           2xl:w-[1720px] 2xl:h-auto 2xl:min-h-[1210px] 2xl:mx-auto 2xl:pb-20 2xl:mt-10
           "
           >
             <p
               className="
-            max-sm:font-air max-sm:font-medium max-sm:text-[28px] max-sm:text-[#2E266F]
+            max-lg:font-air max-lg:font-medium max-lg:text-[28px] max-lg:text-[#2E266F]
             2xl:font-air 2xl:font-medium 2xl:text-[72px] 2xl:text-[#2E266F]
             "
             >
@@ -109,7 +109,7 @@ export default function Home() {
         ) : (
           <div
             className="
-          max-sm:w-[80%] max-sm:mx-auto max-sm:flex max-sm:flex-wrap max-sm:justify-center max-sm:gap-12
+          max-lg:w-[80%] max-lg:mx-auto max-lg:flex max-lg:flex-wrap max-lg:justify-center max-lg:gap-12
           2xl:w-[1720px] 2xl:h-auto 2xl:min-h-[1210px] 2xl:mx-auto 2xl:flex 2xl:flex-wrap 2xl:gap-24 2xl:relative 2xl:pb-20 2xl:mt-10
           "
           >
@@ -135,13 +135,13 @@ export default function Home() {
     <main className="bg-[#FFF5EC]">
       <div
         className="
-      max-sm:container max-sm:max-w-[640px] max-sm:mx-auto max-sm:relative
+      max-lg:container max-lg:max-w-[1024px] max-lg:mx-auto max-lg:relative
       2xl:container 2xl:max-w-[1920px] 2xl:mx-auto 2xl:relative
       "
       >
         <header
           className="
-        max-sm:flex max-sm:justify-center max-sm:relative max-sm:z-10
+        max-lg:flex max-lg:justify-center max-lg:relative max-lg:z-10
         2xl:flex 2xl:justify-center 2xl:relative 2xl:z-10
         "
         >
@@ -149,33 +149,33 @@ export default function Home() {
         </header>
         <div
           className="
-        max-sm:hidden
+        max-lg:hidden
         2xl:w-[25%] 2xl:h-[1210px] 2xl:bg-[#EFC81A] 2xl:absolute 2xl:right-0 2xl:top-0
         "
         ></div>
       </div>
       <div
         className="
-      max-sm:w-[80%] max-sm:flex max-sm:flex-col max-sm:mx-auto max-sm:container
+      max-lg:w-[80%] max-lg:flex max-lg:flex-col max-lg:mx-auto max-lg:container
       2xl:w-[1720px] 2xl:h-[1210px] 2xl:flex 2xl:mx-auto 2xl:container
       "
       >
         {/* Discover Section */}
         <div
           className="
-        max-sm:mt-12
+        max-lg:mt-12
         2xl:mt-80
         "
         >
           <div
             className="
-          max-sm:max-w-[640px] max-sm:flex max-sm:flex-col
+          max-lg:max-w-[1024px] max-lg:flex max-lg:flex-col
           2xl:w-[670px] 2xl:h-auto 2xl:flex 2xl:flex-col
           "
           >
             <p
               className="
-            max-sm:font-air max-sm:font-medium max-sm:text-[32px] max-sm:text-[#2E266F]
+            max-lg:font-air max-lg:font-medium max-lg:text-[32px] max-lg:text-[#2E266F]
             2xl:font-air 2xl:font-medium 2xl:text-[72px] 2xl:text-[#2E266F]
             "
             >
@@ -183,7 +183,7 @@ export default function Home() {
             </p>
             <p
               className="
-            max-sm:font-air max-sm:font-medium max-sm:text-[32px] max-sm:text-[#2E266F] max-sm:mb-3
+            max-lg:font-air max-lg:font-medium max-lg:text-[32px] max-lg:text-[#2E266F] max-lg:mb-3
             2xl:font-air 2xl:font-medium 2xl:text-[72px] 2xl:text-[#2E266F]
             "
             >
@@ -197,7 +197,7 @@ export default function Home() {
         {/* Image Section */}
         <div
           className="
-        max-sm:relative max-sm:mt-3
+        max-lg:relative max-lg:mt-3
         2xl:relative
         "
         >
@@ -205,7 +205,7 @@ export default function Home() {
             src="/food-logo.png"
             alt="food-logo"
             className="
-            max-sm:w-[80%] max-sm:mx-auto
+            max-lg:w-[80%] max-lg:mx-auto
             2xl:w-[878px] 2xl:h-auto 2xl:ml-32
             "
           />
@@ -215,19 +215,19 @@ export default function Home() {
 
       <div
         className="
-      max-sm:w-[80%] max-sm:flex max-sm:items-center max-sm:gap-6 max-sm:mx-auto
+      max-lg:w-[80%] max-lg:flex max-lg:items-center max-lg:gap-6 max-lg:mx-auto
       2xl:w-[1720px] 2xl:h-auto 2xl:flex 2xl:items-center 2xl:gap-12 2xl:mx-auto
       "
       >
         <div
           className="
-        max-sm:w-[16px] max-sm:h-[55px] max-sm:bg-[#EFC81A]
+        max-lg:w-[16px] max-lg:h-[55px] max-lg:bg-[#EFC81A]
         2xl:w-[25px] 2xl:h-[140px] 2xl:bg-[#EFC81A]
         "
         ></div>
         <p
           className="
-        max-sm:font-air max-sm:font-medium max-sm:text-[18px] max-sm:text-[#3F3A3A]
+        max-lg:font-air max-lg:font-medium max-lg:text-[18px] max-lg:text-[#3F3A3A]
         2xl:font-air 2xl:font-medium 2xl:text-[48px] 2xl:text-[#3F3A3A]
         "
         >
@@ -237,26 +237,26 @@ export default function Home() {
 
       <div
         className="
-      max-sm:w-max-[640px] max-sm:w-[80%] max-sm:flex max-sm:flex-col max-sm:mx-auto
+      max-lg:w-max-[640px] max-lg:w-[80%] max-lg:flex max-lg:flex-col max-lg:mx-auto
       2xl:w-max-[1920px] 2xl:w-[1720px] 2xl:h-[1210px] 2xl:flex 2xl:mx-auto
       "
       >
         {/* Image Section */}
         <div
           className="
-        max-sm:mt-8
+        max-lg:mt-8
         2xl:mt-80
         "
         >
           <div
             className="
-          max-sm:w-[80%] max-sm:h-[80%] max-sm:relative max-sm:mx-auto
+          max-lg:w-[80%] max-lg:h-[80%] max-lg:relative max-lg:mx-auto
           2xl:w-[935px] 2xl:h-[881px] 2xl:relative
           "
           >
             <div
               className="
-            max-sm:hidden
+            max-lg:hidden
             2xl:absolute 2xl:bg-[#EFC81A] 2xl:w-[514px] 2xl:h-[820px] 2xl:top-0 2xl:left-0
             "
             ></div>
@@ -264,7 +264,7 @@ export default function Home() {
               src={newRecipeImage}
               alt="newRecipe-image"
               className="
-              max-sm:w-full max-sm:ml-auto max-sm:z-10 max-sm:relative max-sm:rounded-lg
+              max-lg:w-full max-lg:ml-auto max-lg:z-10 max-lg:relative max-lg:rounded-lg
               2xl:w-[800px] 2xl:h-[800px] 2xl:absolute 2xl:z-10 2xl:right-0 2xl:bottom-0 2xl:rounded-lg
               "
             />
@@ -275,19 +275,19 @@ export default function Home() {
         {/* Recipe Info Section */}
         <div
           className="
-        max-sm:flex max-sm:items-center
+        max-lg:flex max-lg:items-center
         2xl:relative 2xl:flex 2xl:items-center
         "
         >
           <div
             className="
-          max-sm:w-[80%] max-sm:flex max-sm:flex-col max-sm:mx-auto
+          max-lg:w-[80%] max-lg:flex max-lg:flex-col max-lg:mx-auto
           2xl:w-[570px] 2xl:h-auto 2xl:ml-36 2xl:flex 2xl:flex-col 2xl:mt-56
           "
           >
             <p
               className="
-            max-sm:font-air max-sm:font-medium max-sm:text-[28px] max-sm:text-[#3F3A3A]
+            max-lg:font-air max-lg:font-medium max-lg:text-[28px] max-lg:text-[#3F3A3A]
             2xl:font-air 2xl:font-medium 2xl:text-[56px] 2xl:text-[#3F3A3A]
             "
             >
@@ -295,13 +295,13 @@ export default function Home() {
             </p>
             <div
               className="
-            max-sm:border-t-2 max-sm:w-full max-sm:h-0 max-sm:border-[#6F6A40] max-sm:mt-3
+            max-lg:border-t-2 max-lg:w-full max-lg:h-0 max-lg:border-[#6F6A40] max-lg:mt-3
             2xl:border-t-2 2xl:w-[100px] 2xl:h-0 2xl:border-[#6F6A40] 2xl:mt-7
             "
             ></div>
             <p
               className="
-            max-sm:font-inter max-sm:text-[18px] max-sm:text-[#3F3A3A] max-sm:mt-3
+            max-lg:font-inter max-lg:text-[18px] max-lg:text-[#3F3A3A] max-lg:mt-3
             2xl:font-inter 2xl:text-[24px] 2xl:text-[#3F3A3A] 2xl:mt-8
             "
             >
@@ -309,7 +309,7 @@ export default function Home() {
             </p>
             <div
               className="
-            max-sm:w-[100%] max-sm:mt-6
+            max-lg:w-[100%] max-lg:mt-6
             2xl:w-[200px] 2xl:mt-14
             "
             >
@@ -322,19 +322,19 @@ export default function Home() {
 
       <div
         className="
-      max-sm:w-[80%] max-sm:flex max-sm:items-center max-sm:gap-6 max-sm:mx-auto max-sm:mt-10 max-sm:pb-12
+      max-lg:w-[80%] max-lg:flex max-lg:items-center max-lg:gap-6 max-lg:mx-auto max-lg:mt-10 max-lg:pb-12
       2xl:w-[1720px] 2xl:h-auto 2xl:flex 2xl:items-center 2xl:gap-12 2xl:mx-auto 2xl:mt-52 2xl:pb-52
       "
       >
         <div
           className="
-        max-sm:w-[16px] max-sm:h-[55px] max-sm:bg-[#EFC81A]
+        max-lg:w-[16px] max-lg:h-[55px] max-lg:bg-[#EFC81A]
         2xl:w-[25px] 2xl:h-[140px] 2xl:bg-[#EFC81A]
         "
         ></div>
         <p
           className="
-        max-sm:font-air max-sm:font-medium max-sm:text-[18px] max-sm:text-[#3F3A3A]
+        max-lg:font-air max-lg:font-medium max-lg:text-[18px] max-lg:text-[#3F3A3A]
         2xl:font-air 2xl:font-medium 2xl:text-[48px] 2xl:text-[#3F3A3A]
         "
         >
@@ -345,7 +345,7 @@ export default function Home() {
       {/* List Recipe */}
       <div
         className="
-      max-sm:w-[80%] max-sm:mx-auto max-sm:flex max-sm:flex-wrap max-sm:justify-center max-sm:gap-12
+      max-lg:w-[80%] max-lg:mx-auto max-lg:flex max-lg:flex-wrap max-lg:justify-center max-lg:gap-12
       2xl:w-[1720px] 2xl:h-auto 2xl:mx-auto 2xl:flex 2xl:flex-wrap 2xl:gap-24
       "
       >
@@ -362,7 +362,7 @@ export default function Home() {
 
       <div
         className="
-      max-sm:w-[80%] max-sm:mx-auto max-sm:mt-14
+      max-lg:w-[80%] max-lg:mx-auto max-lg:mt-14
       2xl:w-[720px] 2xl:mx-auto 2xl:mt-40
       "
       >
