@@ -1,3 +1,6 @@
 {
-  "extends": "next/core-web-vitals"
+  "plugins": [
+    "react-redux"
+  ],
+  "extends": ["next/core-web-vitals", "plugin:react-redux/recommended", "next", "prettier"]
 }

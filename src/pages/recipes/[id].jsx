@@ -1,6 +1,5 @@
 import BookmarkLogo from "@/components/base/BookmarkLogo";
 import ButtonSubmit from "@/components/base/ButtonSubmit";
-import InputField from "@/components/base/InputField";
 import LikeLogo from "@/components/base/LikeLogo";
 import Footer from "@/components/modules/Footer";
 import Navbar from "@/components/modules/Navbar";
@@ -82,7 +81,7 @@ const ProductDetail = () => {
         setLoading(false)
       })
     }
-  }, []);
+  }, [isLogin, router.query.id]);
   function isImage(url) {
     return /^https?:\/\/.+\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
   }

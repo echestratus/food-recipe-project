@@ -1,5 +1,4 @@
 import { getProfileAction } from '@/configs/redux/actions/getProfileAction'
-import axios from 'axios'
 import Cookies from 'js-cookie'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -11,7 +10,7 @@ const Navbar = () => {
     const pathname = usePathname()
     const router = useRouter()
     // const [isLogin, setIsLogin] = useState(false)
-    const {profile, loading, login: isLogin} = useSelector((state) => state.getProfile)
+    const {login: isLogin} = useSelector((state) => state.getProfile)
     const dispatch = useDispatch()
     useEffect(() => {
       dispatch(getProfileAction())
