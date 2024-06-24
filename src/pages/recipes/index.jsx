@@ -95,7 +95,7 @@ const recipes = ({ recipesProps }) => {
           <Navbar />
         </header>
       </div>
-      {/* List Searched Recipes */}
+
       <div className="
       max-lg:w-[80%] max-lg:mx-auto max-lg:flex max-lg:flex-wrap max-lg:justify-center max-lg:gap-12
       2xl:w-[1720px] 2xl:h-auto 2xl:min-h-[1210px] 2xl:mx-auto 2xl:flex 2xl:flex-wrap 2xl:gap-24 2xl:mt-10
@@ -111,10 +111,11 @@ const recipes = ({ recipesProps }) => {
             />
           ))}
       </div>
-      {/* List Searched Recipes */}
+
       <div className="
       max-lg:w-[80%] max-lg:mx-auto max-lg:mt-12 max-lg:flex max-lg:justify-center
-      2xl:w-[1720px] 2xl:h-auto 2xl:mx-auto 2xl:mt-20 2xl:flex 2xl:justify-center
+      lg:w-[1024px] lg:h-auto lg:mx-auto lg:mt-20 lg:flex lg:justify-center
+      2xl:w-[1536px] 2xl:h-auto 2xl:mx-auto 2xl:mt-20 2xl:flex 2xl:justify-center
       ">
         <Pagination pagination={pagination} setPagination={setPagination} />
       </div>

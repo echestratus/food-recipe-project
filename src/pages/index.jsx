@@ -71,12 +71,14 @@ export default function Home() {
         <div
           className="
         max-lg:container max-lg:max-w-[1024px] max-lg:mx-auto max-lg:relative
+        lg:container lg:max-w-[1536px] lg:mx-auto lg:relative
         2xl:container 2xl:max-w-[1920px] 2xl:mx-auto 2xl:relative
         "
         >
           <header
             className="
           max-lg:flex max-lg:justify-center max-lg:relative max-lg:z-10
+          lg:flex lg:justify-center lg:relative lg:z-10
           2xl:flex 2xl:justify-center 2xl:relative 2xl:z-10
           "
           >
@@ -86,6 +88,7 @@ export default function Home() {
         <div
           className="
         max-lg:hidden
+        lg:w-[25%]  lg:h-full lg:bg-[#EFC81A] lg:absolute lg:right-0 lg:top-0
         2xl:w-[25%]  2xl:h-full 2xl:bg-[#EFC81A] 2xl:absolute 2xl:right-0 2xl:top-0
         "
         ></div>
@@ -94,12 +97,14 @@ export default function Home() {
           <div
             className="
           max-lg:w-[80%] max-lg:flex max-lg:flex-col max-lg:mx-auto max-lg:container
-          2xl:w-[1720px] 2xl:h-auto 2xl:min-h-[1210px] 2xl:mx-auto 2xl:pb-20 2xl:mt-10
+          lg:min-w-[1024px] lg:min-h-screen lg:h-auto lg:mx-auto lg:pb-20 lg:mt-10
+          2xl:min-w-[1536px] 2xl:h-auto 2xl:min-h-screen 2xl:mx-auto 2xl:pb-20 2xl:mt-10
           "
           >
             <p
               className="
             max-lg:font-air max-lg:font-medium max-lg:text-[28px] max-lg:text-[#2E266F]
+            lg:font-air lg:font-medium lg:text-[72px] lg:text-[#2E266F]
             2xl:font-air 2xl:font-medium 2xl:text-[72px] 2xl:text-[#2E266F]
             "
             >
@@ -110,7 +115,8 @@ export default function Home() {
           <div
             className="
           max-lg:w-[80%] max-lg:mx-auto max-lg:flex max-lg:flex-wrap max-lg:justify-center max-lg:gap-12
-          2xl:w-[1720px] 2xl:h-auto 2xl:min-h-[1210px] 2xl:mx-auto 2xl:flex 2xl:flex-wrap 2xl:gap-24 2xl:relative 2xl:pb-20 2xl:mt-10
+          lg:min-w-[1024px] lg:h-auto lg:min-h-screen lg:mx-auto lg:flex lg:justify-center lg:flex-wrap lg:gap-24 lg:relative lg:pb-20 lg:mt-10
+          2xl:min-w-[1536px] 2xl:max-w-[1720px] 2xl:mx-auto 2xl:h-auto 2xl:min-h-screen 2xl:flex 2xl:flex-wrap 2xl:justify-center 2xl:gap-24 2xl:relative 2xl:pb-20 2xl:mt-10
           "
           >
             {searchedList.map((recipe, index) => (
@@ -136,12 +142,14 @@ export default function Home() {
       <div
         className="
       max-lg:container max-lg:max-w-[1024px] max-lg:mx-auto max-lg:relative
+      lg:container lg:max-w-[1536px] lg:mx-auto lg:relative
       2xl:container 2xl:max-w-[1920px] 2xl:mx-auto 2xl:relative
       "
       >
         <header
           className="
         max-lg:flex max-lg:justify-center max-lg:relative max-lg:z-10
+        lg:flex lg:justify-center lg:relative lg:z-10
         2xl:flex 2xl:justify-center 2xl:relative 2xl:z-10
         "
         >
@@ -150,6 +158,7 @@ export default function Home() {
         <div
           className="
         max-lg:hidden
+        lg:w-[25%] lg:h-[1210px] lg:bg-[#EFC81A] lg:absolute lg:right-0 lg:top-0
         2xl:w-[25%] 2xl:h-[1210px] 2xl:bg-[#EFC81A] 2xl:absolute 2xl:right-0 2xl:top-0
         "
         ></div>

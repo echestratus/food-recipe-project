@@ -30,6 +30,7 @@ const RecipeCard = ({imageURL, recipeName="Recipe Name", id}) => {
   return (
     <div onClick={handleClick} className={`
     max-lg:w-[300px] max-lg:h-[300px] max-lg:flex max-lg:items-end max-lg:justify-start max-lg:rounded-2xl max-lg:relative max-lg:shadow-2xl max-lg:hover:cursor-pointer max-lg:hover:scale-110 max-lg:ease-in max-lg:duration-500
+    lg:w-[500px] lg:h-[500px] lg:flex lg:items-end lg:justify-start lg:rounded-lg lg:relative lg:shadow-lg lg:hover:cursor-pointer lg:hover:scale-110 lg:ease-in lg:duration-500
     2xl:w-[500px] 2xl:h-[500px] 2xl:flex 2xl:items-end 2xl:justify-start 2xl:rounded-2xl 2xl:relative 2xl:shadow-2xl 2xl:hover:cursor-pointer 2xl:hover:scale-110 2xl:ease-in 2xl:duration-500
     `}>
       {isImage(imageURL) === true ? (
@@ -39,6 +40,7 @@ const RecipeCard = ({imageURL, recipeName="Recipe Name", id}) => {
       )}
         <p className='
         max-lg:w-[40%] max-lg:bg-[#A2A3A5AA] max-lg:pl-2 max-lg:rounded-md max-lg:font-air max-lg:font-medium max-lg:text-[18px] max-lg:text-[#3F3A3A] max-lg:ml-7 max-lg:mb-7 max-lg:relative
+        lg:w-[191px] lg:font-air lg:font-medium lg:text-[32px] lg:text-[#3F3A3A] lg:bg-[#A2A3A5AA] lg:pl-2 lg:rounded-lg lg:ml-14 lg:mb-14 lg:relative
         2xl:w-[191px] 2xl:font-air 2xl:font-medium 2xl:text-[32px] 2xl:text-[#3F3A3A] 2xl:bg-[#A2A3A5AA] 2xl:pl-2 2xl:rounded-lg 2xl:ml-14 2xl:mb-14 2xl:relative
         '>{recipeName}</p>
     </div>
