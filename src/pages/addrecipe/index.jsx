@@ -20,18 +20,18 @@ const addrecipe = () => {
   const dispatch = useDispatch()
 
   useEffect(()=>{
-    if (isLogin) {
+    if (isLogin === false) {
+      router.push('/auth/login')
+    } else {
       setFormRecipe({
         ...formRecipe,
         image: imageURL
       })
-    } else {
-      router.push('/auth/login')
     }
   },[imageURL])
 
-  const handleUploadImage = (e, setFormRecipe) => {
-    dispatch(uploadImageAction(e, setFormRecipe))
+  const handleUploadImage = (e) => {
+    dispatch(uploadImageAction(e, getImage))
 
     // const file = e.target.files[0];
     // const formData = new FormData();
@@ -229,7 +229,7 @@ const addrecipe = () => {
         </div>
         <div className="
         max-lg:mx-auto max-lg:w-[100%] max-lg:mt-10 max-lg:rounded-2xl
-        lg:mx-auto lg:w-[100%] lg:h-auto lg:mt-12 lg:rounded-2xl
+        lg:mx-auto lg:w-[100%] lg:max-w-[426px] lg:h-auto lg:mt-12 lg:rounded-2xl
         desktop:mx-auto desktop:w-[426px] desktop:h-auto desktop:mt-12 desktop:rounded-2xl
         ">
           <ButtonSubmit onClick={handleClickPost}>Post</ButtonSubmit>
