@@ -49,7 +49,7 @@ const Footer = () => {
                 </ul>
                 <p className='
                 max-lg:font-air max-lg:font-normal max-lg:text-[14px] max-lg:text-[#000000] max-lg:mt-12
-                lg:font-air lg:font-normal lg:text-[14px] lg:text-[#000000] lg:text-end lg:absolute lg:right-0
+                lg:font-air lg:font-normal lg:text-[14px] lg:text-[#000000] lg:text-end lg:absolute lg:right-4
                 desktop:font-air desktop:font-normal desktop:text-[14px] desktop:text-[#000000] desktop:text-end desktop:absolute desktop:right-0
                 '>© Arkademy</p>
             </div>

@@ -25,7 +25,7 @@ const Navbar = () => {
   return (
     <nav className='
     max-lg:flex max-lg:w-[95%] max-lg:max-w-[1024px] max-lg:bg-transparent max-lg:justify-between max-lg:items-center max-lg:py-7
-    lg:flex lg:min-w-[1024px] lg:max-w-[1720px] lg:w-[90%] lg:h-auto lg:bg-transparent lg:justify-between lg:items-center lg:py-7
+    lg:flex lg:max-w-[1720px] lg:w-[90%] lg:h-auto lg:bg-transparent lg:justify-between lg:items-center lg:py-7
     desktop:flex desktop:w-[1720px] desktop:h-auto desktop:bg-transparent desktop:justify-between desktop:items-center desktop:py-7
     '>
       <ul className='
