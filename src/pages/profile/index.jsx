@@ -136,11 +136,13 @@ const profile = () => {
         </div>
         <div className="
         max-lg:w-[80%] max-lg:mx-auto max-lg:mt-10
+        lg:w-[90%] lg:h-auto lg:mx-auto lg:min-h-screen lg:mt-10
         w-[1720px] h-auto min-h-[1210px] mx-auto mt-10
         ">
           <Skeleton className="
           max-lg:h-[300px]
-          2xl:h-[700px]
+          lg:h-[700px]
+          desktop:h-[700px]
           " />
         </div>
       </div>
@@ -150,7 +152,8 @@ const profile = () => {
     <div className="bg-[#FFFFFF]">
       <div className="
       max-lg:container max-lg:max-w-[1024px] max-lg:mx-auto
-      2xl:container 2xl:max-w-[1920px] 2xl:mx-auto
+      lg:container lg:max-w-[1920px] lg:mx-auto
+      desktop:container desktop:max-w-[1920px] desktop:mx-auto
       ">
         <header className="flex justify-center">
           <Navbar />
@@ -158,13 +161,15 @@ const profile = () => {
       </div>
       <div className="
       max-lg:w-[80%] max-lg:mx-auto max-lg:mt-10
-      2xl:w-[1720px] 2xl:h-auto 2xl:mx-auto 2xl:mt-10
+      lg:w-[90%] lg:h-auto lg:mx-auto lg:mt-10
+      desktop:w-[1720px] desktop:h-auto desktop:mx-auto desktop:mt-10
       ">
         {/* Photo Profile Section */}
         <div>
           <div className="
           max-lg:w-[80px] max-lg:h-[80px] max-lg:mx-auto max-lg:relative
-          2xl:w-[172px] 2xl:h-[172px] 2xl:mx-auto 2xl:relative
+          lg:w-[172px] lg:h-[172px] lg:mx-auto lg:relative
+          desktop:w-[172px] desktop:h-[172px] desktop:mx-auto desktop:relative
           ">
             <img
               src="/IconUser.svg"
@@ -213,7 +218,7 @@ const profile = () => {
       <div className="w-full h-0 border-t border-[#DFDFDF] mt-10"></div>
       <div className="
       max-lg:pl-5 max-lg:w-[80%] max-lg:max-w-[1024px] max-lg:h-auto max-lg:mx-auto max-lg:mt-10
-      pl-5 w-[1720px] h-auto mx-auto mt-10
+      pl-5 w-[1720px] lg:w-[90%] h-auto mx-auto mt-10
       ">
         {switchShowedRecipe()}
       </div>

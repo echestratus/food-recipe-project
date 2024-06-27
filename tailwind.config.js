@@ -7,6 +7,10 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    screens: {
+      'lg': '1024px',
+      'desktop': '1720px',
+    },
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -17,6 +21,10 @@ module.exports = {
       fontFamily: {
         'inter': ['Inter'],
         'air': ['var(--font-airbnb)'],
+      },
+      screens: {
+        'laptop': '1024px',
+        'desktop': '1720px',
       },
     },
   },

@@ -50,13 +50,13 @@ const login = () => {
 
   return (
     <div className="
-    w-[100%] h-auto flex justify-center items-center 
+    w-[100%] h-auto min-h-screen flex justify-center items-center 
     lg:w-[100%] lg:h-auto lg:flex lg:justify-center lg:items-center
     ">
       <AuthBackground />
       <div className="
       mt-36 w-[80%] max-w-[640px]
-      lg:w-[55%] lg:h-[1600px] lg:max-w-none lg:mt-0 lg:flex lg:justify-center lg:items-center lg:bg-white
+      lg:w-[55%] lg:min-h-screen lg:max-w-none lg:mt-0 lg:flex lg:justify-center lg:items-center lg:bg-white
       ">
         <div className="
         flex flex-col justify-center 

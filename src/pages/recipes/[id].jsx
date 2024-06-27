@@ -205,7 +205,8 @@ const ProductDetail = () => {
           </header>
         </div>
         <div className="
-        max-lg:w-[80%] max-lg:h-auto max-lg:min-h-[1210px] max-lg:mx-auto max-lg:mt-10
+        max-desktop:w-[80%] max-desktop:h-auto max-desktop:min-h-[1210px] max-desktop:mx-auto max-desktop:mt-10
+        lg:w-[90%] lg:h-auto lg:min-h-[1210px] lg:mx-auto lg:mt-10
         w-[1720px] h-auto min-h-[1210px] mx-auto mt-10
         ">
           <Skeleton className="h-[700px]" />
@@ -217,7 +218,7 @@ const ProductDetail = () => {
   return (
     <div className="bg-[#FFFFFF]">
       <div className="
-      max-lg:container max-lg:max-w-[1024px] max-lg:mx-auto
+      max-desktop:container max-desktop:max-w-[1024px] max-desktop:mx-auto
       container max-w-[1920px] mx-auto
       ">
         <header className="flex justify-center">
@@ -225,11 +226,12 @@ const ProductDetail = () => {
         </header>
       </div>
       <div className="
-      max-lg:w-[80%] max-lg:h-auto max-lg:min-h-[1210px] max-lg:mx-auto max-lg:mt-10
+      max-desktop:w-[80%] max-desktop:h-auto max-desktop:min-h-[1210px] max-desktop:mx-auto max-desktop:mt-10
       w-[1720px] h-auto min-h-[1210px] mx-auto mt-10
       ">
         <p className="
         max-lg:font-air max-lg:font-medium max-lg:text-[30px] max-lg:text-[#2E266F] max-lg:text-center max-lg:mb-10
+        lg:font-air lg:font-medium lg:text-[72px] lg:text-[#2E266F] lg:text-center lg:mb-10
         font-air font-medium text-[72px] text-[#2E266F] text-center mb-20
         ">
           {detailRecipe.title}
@@ -240,8 +242,8 @@ const ProductDetail = () => {
           <div
             style={{ "--image-recipe": `url(${detailRecipe.image})` }}
             className="
-            max-lg:w-[100%] max-lg:h-[300px] max-lg:flex max-lg:justify-end max-lg:items-end max-lg:gap-4 max-lg:bg-[image:var(--image-recipe)] max-lg:bg-cover max-lg:rounded-2xl max-lg:mx-auto max-lg:pb-5 max-lg:pr-5
-            2xl:w-[1082px] 2xl:h-[700px] 2xl:flex 2xl:justify-end 2xl:items-end 2xl:gap-4 2xl:bg-[image:var(--image-recipe)] 2xl:bg-cover 2xl:rounded-2xl 2xl:mx-auto 2xl:pb-10 2xl:pr-10
+            max-desktop:w-[100%] aspect-video max-desktop:flex max-desktop:justify-end max-desktop:items-end max-desktop:gap-4 max-desktop:bg-[image:var(--image-recipe)] max-desktop:bg-cover max-desktop:rounded-2xl max-desktop:mx-auto max-desktop:pb-5 max-desktop:pr-5
+            desktop:w-[1082px] desktop:h-[700px] desktop:flex desktop:justify-end desktop:items-end desktop:gap-4 desktop:bg-[image:var(--image-recipe)] desktop:bg-cover desktop:rounded-2xl desktop:mx-auto desktop:pb-10 desktop:pr-10
             "
           >
             <BookmarkLogo isSaved={isSaved} onClick={handleClickSave} />
@@ -251,8 +253,8 @@ const ProductDetail = () => {
           <div
             style={{ "--image-recipe": `url(${imgURL})` }}
             className="
-            max-lg:w-[300px] max-lg:h-[150px] max-lg:flex max-lg:justify-end max-lg:items-end max-lg:gap-4 max-lg:bg-[image:var(--image-recipe)] max-lg:bg-cover max-lg:rounded-2xl max-lg:mx-auto max-lg:pb-10 max-lg:pr-10
-            2xl:w-[1082px] 2xl:h-[700px] 2xl:flex 2xl:justify-end 2xl:items-end 2xl:gap-4 2xl:bg-[image:var(--image-recipe)] 2xl:bg-cover 2xl:rounded-2xl 2xl:mx-auto 2xl:pb-10 2xl:pr-10
+            max-desktop:w-[300px] max-desktop:h-[150px] max-desktop:flex max-desktop:justify-end max-desktop:items-end max-desktop:gap-4 max-desktop:bg-[image:var(--image-recipe)] max-desktop:bg-cover max-desktop:rounded-2xl max-desktop:mx-auto max-desktop:pb-10 max-desktop:pr-10
+            desktop:w-[1082px] desktop:h-[700px] desktop:flex desktop:justify-end desktop:items-end desktop:gap-4 desktop:bg-[image:var(--image-recipe)] desktop:bg-cover desktop:rounded-2xl desktop:mx-auto desktop:pb-10 desktop:pr-10
             "
           >
             <BookmarkLogo isSaved={isSaved} onClick={handleClickSave} />
@@ -262,28 +264,31 @@ const ProductDetail = () => {
         {/* Image Section */}
 
         <div className="
-        2xl:pl-52">
+        desktop:pl-52">
           <p className="
           max-lg:font-air max-lg:font-medium max-lg:text-[24px] max-lg:text-[#3F3A3A] max-lg:mt-24
+          lg:font-air lg::font-medium lg:text-[48px] lg:text-[#3F3A3A] lg:mt-24
           font-air font-medium text-[48px] text-[#3F3A3A] mt-24
           ">
             Ingredients
           </p>
           <p className="
           max-lg:font-inter max-lg:font-light max-lg:text-[15px] max-lg:text-[#000000] max-lg:whitespace-pre-wrap max-lg:mt-10
+          lg:font-inter lg:font-light lg:text-[36px] lg:text-[#000000] lg:whitespace-pre-wrap lg:mt-10
           font-inter font-light text-[36px] text-[#000000] whitespace-pre-wrap mt-10
           ">
             {detailRecipe.description}
           </p>
           <p className="
           max-lg:font-air max-lg:font-medium max-lg:text-[24px] max-lg:text-[#3F3A3A] max-lg:mt-24
+          lg:font-air lg:font-medium lg:text-[48px] lg:text-[#3F3A3A] lg:mt-24
           font-air font-medium text-[48px] text-[#3F3A3A] mt-24
           ">
             Video Step
           </p>
           <div className="flex flex-col gap-12 mt-16">
             <button className="
-            max-lg:flex max-lg:justify-center max-lg:items-center max-lg:bg-[#EFC81A] max-lg:w-[200px] max-lg:h-[80px] max-lg:rounded-2xl
+            max-desktop:flex max-desktop:justify-center max-desktop:items-center max-desktop:bg-[#EFC81A] max-desktop:w-[200px] max-desktop:h-[80px] max-desktop:rounded-2xl
             flex justify-center items-center bg-[#EFC81A] w-[411.27px] h-[93.01px] rounded-2xl
             ">
               <svg
@@ -303,7 +308,7 @@ const ProductDetail = () => {
               </svg>
             </button>
             <button className="
-            max-lg:flex max-lg:justify-center max-lg:items-center max-lg:bg-[#EFC81A] max-lg:w-[200px] max-lg:h-[80px] max-lg:rounded-2xl
+            max-desktop:flex max-desktop:justify-center max-desktop:items-center max-desktop:bg-[#EFC81A] max-desktop:w-[200px] max-desktop:h-[80px] max-desktop:rounded-2xl
             flex justify-center items-center bg-[#EFC81A] w-[411.27px] h-[93.01px] rounded-2xl
             ">
               <svg
@@ -323,7 +328,7 @@ const ProductDetail = () => {
               </svg>
             </button>
             <button className="
-            max-lg:flex max-lg:justify-center max-lg:items-center max-lg:bg-[#EFC81A] max-lg:w-[200px] max-lg:h-[80px] max-lg:rounded-2xl
+            max-desktop:flex max-desktop:justify-center max-desktop:items-center max-desktop:bg-[#EFC81A] max-desktop:w-[200px] max-desktop:h-[80px] max-desktop:rounded-2xl
             flex justify-center items-center bg-[#EFC81A] w-[411.27px] h-[93.01px] rounded-2xl
             ">
               <svg
@@ -343,7 +348,7 @@ const ProductDetail = () => {
               </svg>
             </button>
             <button className="
-            max-lg:flex max-lg:justify-center max-lg:items-center max-lg:bg-[#EFC81A] max-lg:w-[200px] max-lg:h-[80px] max-lg:rounded-2xl
+            max-desktop:flex max-desktop:justify-center max-desktop:items-center max-desktop:bg-[#EFC81A] max-desktop:w-[200px] max-desktop:h-[80px] max-desktop:rounded-2xl
             flex justify-center items-center bg-[#EFC81A] w-[411.27px] h-[93.01px] rounded-2xl
             ">
               <svg
@@ -367,7 +372,7 @@ const ProductDetail = () => {
 
         {/* Send Comment Section */}
         <div className="
-        max-lg:flex max-lg:flex-col max-lg:justify-center max-lg:items-center max-lg:mt-12 max-lg:gap-10
+        max-desktop:flex max-desktop:flex-col max-desktop:justify-center max-desktop:items-center max-desktop:mt-12 max-desktop:gap-10
         flex flex-col justify-center items-center mt-36 gap-10
         ">
           <textarea
@@ -378,10 +383,11 @@ const ProductDetail = () => {
             placeholder="Comment"
             className="
             max-lg:pl-2 max-lg:pt-2 max-lg:w-[100%] max-lg:h-[380px] max-lg:bg-[#F6F5F4] max-lg:outline-none max-lg:rounded-2xl max-lg:mx-auto max-lg:font-air max-lg:font-medium max-lg:text-[15px] max-lg:text-[#666666] max-lg:placeholder:font-air max-lg:placeholder:font-medium max-lg:placeholder:text-[15px] max-lg:placeholder:text-[#666666]
+            lg:pl-6 lg:pt-6 lg:w-[100%] lg:h-[380px] lg:bg-[#F6F5F4] lg:outline-none lg:rounded-2xl lg:mx-auto lg:font-air lg:font-medium lg:text-[24px] lg:text-[#666666] lg:placeholder:font-air lg:placeholder:font-medium lg:placeholder:text-[24px] lg:placeholder:text-[#666666]
             pl-6 pt-6 w-[1300px] h-[380px] bg-[#F6F5F4] outline-none rounded-2xl mx-auto font-air font-medium text-[24px] text-[#666666] placeholder:font-air placeholder:font-medium placeholder:text-[24px] placeholder:text-[#666666]"
           ></textarea>
           <div className="
-          max-lg:w-full
+          max-desktop:w-full max-desktop:max-w-[426px]
           w-[426px]
           ">
             <ButtonSubmit>Send</ButtonSubmit>
@@ -391,11 +397,11 @@ const ProductDetail = () => {
 
         {/* List of Comments */}
         <div className="
-        max-lg:pl-5
+        max-desktop:pl-5
         pl-52
         ">
         <p className="
-        max-lg:font-air max-lg:font-medium max-lg:text-[24px] max-lg:text-[#3F3A3A] max-lg:mt-24
+        max-desktop:font-air max-desktop:font-medium max-desktop:text-[24px] max-desktop:text-[#3F3A3A] max-desktop:mt-24
         font-air font-medium text-[48px] text-[#3F3A3A] mt-24">
             Comment
           </p>

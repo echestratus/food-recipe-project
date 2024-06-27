@@ -25,13 +25,13 @@ const Navbar = () => {
   return (
     <nav className='
     max-lg:flex max-lg:w-[95%] max-lg:max-w-[1024px] max-lg:bg-transparent max-lg:justify-between max-lg:items-center max-lg:py-7
-    lg:flex lg:min-w-[1024px] lg:max-w-[1536px] lg:h-auto lg:bg-transparent lg:justify-between lg:items-center lg:py-7
-    2xl:flex 2xl:w-[1720px] 2xl:h-auto 2xl:bg-transparent 2xl:justify-between 2xl:items-center 2xl:py-7
+    lg:flex lg:min-w-[1024px] lg:max-w-[1720px] lg:w-[90%] lg:h-auto lg:bg-transparent lg:justify-between lg:items-center lg:py-7
+    desktop:flex desktop:w-[1720px] desktop:h-auto desktop:bg-transparent desktop:justify-between desktop:items-center desktop:py-7
     '>
       <ul className='
       max-lg:flex max-lg:items-center max-lg:gap-6 max-lg:font-air max-lg:text-[14px] max-lg:font-medium max-lg:text-[#2E266F]
       lg:flex lg:items-center lg:gap-20 lg:font-air lg:text-[18px] lg:font-medium lg:text-[#2E266F]
-      2xl:flex 2xl:items-center 2xl:gap-20 2xl:font-air 2xl:text-[18px] 2xl:font-medium 2xl:text-[#2E266F]
+      desktop:flex desktop:items-center desktop:gap-20 desktop:font-air desktop:text-[18px] desktop:font-medium desktop:text-[#2E266F]
       '>
         <li>
           <Link className={`${pathname === '/' ? 'border-b-2 border-[#2E266F]' : ''}`} href="/">
@@ -77,35 +77,35 @@ const Navbar = () => {
       <div className='
       max-lg:flex max-lg:items-center max-lg:gap-2
       lg:flex lg:items-center lg:gap-3
-      2xl:flex 2xl:items-center 2xl:gap-3
+      desktop:flex desktop:items-center desktop:gap-3
       '>
         <img id='user-icon' src="/user-icon.png" alt="user-icon" className='
         max-lg:w-[36px] max-lg:h-[36px]
         lg:w-[52px] lg:h-[52px]
-        2xl:w-[52px] 2xl:h-[52px]
+        desktop:w-[52px] desktop:h-[52px]
         ' />
         <label htmlFor="user-icon" className='
         max-lg:font-air max-lg:font-normal max-lg:text-[14px] max-lg:text-[#2E266F]
         lg:font-air lg:font-normal lg:text-[16px] lg:text-[#FFFFFF]
-        2xl:font-air 2xl:font-normal 2xl:text-[16px] 2xl:text-[#FFFFFF]
-        '><Link href="/auth/login" className={`${pathname !== '/' && '2xl:text-[#2E266F]'}`}>Login</Link></label>
+        desktop:font-air desktop:font-normal desktop:text-[16px] desktop:text-[#FFFFFF]
+        '><Link href="/auth/login" className={`${pathname !== '/' && 'text-[#2E266F]'}`}>Login</Link></label>
       </div>
       ) : (
         <div className='
       max-lg:flex max-lg:items-center max-lg:gap-2
       lg:flex lg:items-center lg:gap-3
-      2xl:flex 2xl:items-center 2xl:gap-3
+      desktop:flex desktop:items-center desktop:gap-3
       '>
         <img id='user-icon' src="/user-icon.png" alt="user-icon" className='
         max-lg:w-[36px] max-lg:h-[36px]
         lg:w-[52px] lg:h-[52px]
-        2xl:w-[52px] 2xl:h-[52px]
+        desktop:w-[52px] desktop:h-[52px]
         ' />
         <label htmlFor="user-icon" className='
-        max-lg:font-air max-lg:font-normal max-lg:text-[14px] max-lg:text-[#2E266F] hover:cursor-pointer
+        max-lg:font-air max-lg:font-normal max-lg:text-[14px] max-lg:text-[#FFFFFF] hover:cursor-pointer
         lg:font-air lg:font-normal lg:text-[16px] lg:text-[#FFFFFF]
-        2xl:font-air 2xl:font-normal 2xl:text-[16px] 2xl:text-[#FFFFFF]
-        ' onClick={handleLogout}>Logout</label>
+        desktop:font-air desktop:font-normal desktop:text-[16px] desktop:text-[#FFFFFF]
+        ' onClick={handleLogout}><span className={`${pathname !== '/' && 'text-[#2E266F]'}`}>Logout</span></label>
       </div>
       )}
     </nav>

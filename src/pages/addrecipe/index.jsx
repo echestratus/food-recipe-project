@@ -103,22 +103,26 @@ const addrecipe = () => {
     <div className="bg-[#FFFFFF]">
       <div className="
       max-lg:container max-lg:max-w-[1024px] max-lg:mx-auto
-      2xl:container 2xl:max-w-[1920px] 2xl:mx-auto
+      lg:container lg:max-w-[1720px] lg:mx-auto
+      desktop:container desktop:max-w-[1920px] desktop:mx-auto
       ">
         <header className="
         max-lg:flex max-lg:justify-center
-        2xl:flex 2xl:justify-center
+        lg:flex lg:justify-center
+        desktop:flex desktop:justify-center
         ">
           <Navbar />
         </header>
       </div>
       <div className="
       max-lg:w-[80%] max-lg:mx-auto max-lg:mt-10
-      2xl:w-[1720px] 2xl:h-auto 2xl:min-h-[1210px] 2xl:mx-auto 2xl:mt-10
+      lg:w-[90%] lg:mx-auto lg:mt-10
+      desktop:w-[1720px] desktop:h-auto desktop:min-h-[1210px] desktop:mx-auto desktop:mt-10
       ">
         <label className="
-        max-lg:w-[100%] max-lg:h-[240px] max-lg:mx-auto max-lg:bg-[#F6F5F4] max-lg:rounded-xl max-lg:flex max-lg:justify-center max-lg:items-center max-lg:relative
-        2xl:w-[1300px] 2xl:h-[480px] 2xl:mx-auto 2xl:bg-[#F6F5F4] 2xl:rounded-2xl 2xl:flex 2xl:justify-center 2xl:items-center 2xl:relative
+        max-lg:w-[100%] max-lg:mx-auto max-lg:bg-[#F6F5F4] max-lg:rounded-xl max-lg:flex max-lg:justify-center max-lg:items-center max-lg:relative
+        lg:w-[100%] aspect-video lg:mx-auto lg:bg-[#F6F5F4] lg:rounded-2xl lg:flex lg:justify-center lg:items-center lg:relative
+        desktop:w-[1300px] desktop:mx-auto desktop:bg-[#F6F5F4] desktop:rounded-2xl desktop:flex desktop:justify-center desktop:items-center desktop:relative
         ">
           {formRecipe.image ? (
             <img
@@ -126,13 +130,15 @@ const addrecipe = () => {
               alt="recipeImage"
               className="
               max-lg:w-full max-lg:h-full max-lg:object-cover max-lg:rounded-2xl max-lg:absolute
-              2xl:w-full 2xl:h-full 2xl:object-cover 2xl:rounded-2xl 2xl:absolute
+              lg:w-full lg:h-full lg:object-cover lg:rounded-2xl lg:absolute aspect-video
+              desktop:w-full desktop:h-full desktop:object-cover desktop:rounded-2xl desktop:absolute
               "
             />
           ) : (
             <div className="
             max-lg:flex max-lg:flex-col max-lg:items-center max-lg:hover:cursor-pointer
-            2xl:flex 2xl:flex-col 2xl:items-center 2xl:hover:cursor-pointer
+            lg:flex lg:flex-col lg:items-center lg:hover:cursor-pointer
+            desktop:flex desktop:flex-col desktop:items-center desktop:hover:cursor-pointer
             ">
               <svg
                 width="64"
@@ -165,7 +171,8 @@ const addrecipe = () => {
               </svg>
               <p className="
               max-lg:font-air max-lg:font-medium max-lg:text-[24px] max-lg:text-[#666666]
-              2xl:font-air 2xl:font-medium 2xl:text-[24px] 2xl:text-[#666666]
+              lg:font-air lg:font-medium lg:text-[24px] lg:text-[#666666]
+              desktop:font-air desktop:font-medium desktop:text-[24px] desktop:text-[#666666]
               ">
                 Add Photo
               </p>
@@ -176,14 +183,16 @@ const addrecipe = () => {
             accept="image/*"
             className="
             max-lg:hidden
-            2xl:hidden
+            hidden
+            desktop:hidden
             "
             onChange={handleUploadImage}
           />
         </label>
         <div className="
         max-lg:mx-auto max-lg:w-[100%] max-lg:h-[50px] max-lg:mt-10 max-lg:rounded-2xl
-        2xl:mx-auto 2xl:w-[1300px] 2xl:h-[100px] 2xl:mt-12 2xl:rounded-2xl
+        lg:mx-auto lg:w-[100%] lg:h-[100px] lg:mt-12 lg:rounded-2xl
+        desktop:mx-auto desktop:w-[1300px] desktop:h-[100px] desktop:mt-12 desktop:rounded-2xl
         ">
           <input
             type="text"
@@ -191,7 +200,8 @@ const addrecipe = () => {
             placeholder="Title"
             className="
             max-lg:w-full max-lg:h-full max-lg:bg-[#F6F5F4] max-lg:pl-5 max-lg:font-air max-lg:font-medium max-lg:text-[14px] max-lg:text-[#666666] max-lg:rounded-2xl max-lg:outline-none
-            2xl:w-full 2xl:h-full 2xl:bg-[#F6F5F4] 2xl:pl-8 2xl:font-air 2xl:font-medium 2xl:text-[24px] 2xl:text-[#666666] 2xl:rounded-2xl 2xl:outline-none
+            lg:w-full lg:h-full lg:bg-[#F6F5F4] lg:pl-8 lg:font-air lg:font-medium lg:text-[24px] lg:text-[#666666] lg:rounded-2xl lg:outline-none
+            desktop:w-full desktop:h-full desktop:bg-[#F6F5F4] desktop:pl-8 desktop:font-air desktop:font-medium desktop:text-[24px] desktop:text-[#666666] desktop:rounded-2xl desktop:outline-none
             "
             value={formRecipe.title}
             onChange={handleChangeTitle}
@@ -199,7 +209,8 @@ const addrecipe = () => {
         </div>
         <div className="
         max-lg:mx-auto max-lg:w-[100%] max-lg:h-[240px] max-lg:mt-10 max-lg:rounded-2xl
-        2xl:mx-auto 2xl:w-[1300px] 2xl:h-[380px] 2xl:mt-12 2xl:rounded-2xl
+        lg:mx-auto lg:w-[100%] lg:aspect-video lg:mt-12 lg:rounded-2xl
+        desktop:mx-auto desktop:w-[1300px] desktop:h-[380px] desktop:mt-12 desktop:rounded-2xl
         ">
           <textarea
             name="description"
@@ -211,13 +222,15 @@ const addrecipe = () => {
             onChange={handleChangeDescription}
             className="
             max-lg:w-full max-lg:h-full max-lg:bg-[#F6F5F4] max-lg:pl-5 max-lg:pt-5 max-lg:font-air max-lg:font-medium max-lg:text-[14px] max-lg:text-[#666666] max-lg:rounded-2xl max-lg:outline-none
-            2xl:w-full 2xl:h-full 2xl:bg-[#F6F5F4] 2xl:pl-8 2xl:pt-8 2xl:font-air 2xl:font-medium 2xl:text-[24px] 2xl:text-[#666666] 2xl:rounded-2xl 2xl:outline-none
+            lg:w-full lg:h-full lg:bg-[#F6F5F4] lg:pl-8 lg:pt-8 lg:font-air lg:font-medium lg:text-[24px] lg:text-[#666666] lg:rounded-2xl lg:outline-none
+            desktop:w-full desktop:h-full desktop:bg-[#F6F5F4] desktop:pl-8 desktop:pt-8 desktop:font-air desktop:font-medium desktop:text-[24px] desktop:text-[#666666] desktop:rounded-2xl desktop:outline-none
             "
           ></textarea>
         </div>
         <div className="
         max-lg:mx-auto max-lg:w-[100%] max-lg:mt-10 max-lg:rounded-2xl
-        2xl:mx-auto 2xl:w-[426px] 2xl:h-auto 2xl:mt-12 2xl:rounded-2xl
+        lg:mx-auto lg:w-[100%] lg:h-auto lg:mt-12 lg:rounded-2xl
+        desktop:mx-auto desktop:w-[426px] desktop:h-auto desktop:mt-12 desktop:rounded-2xl
         ">
           <ButtonSubmit onClick={handleClickPost}>Post</ButtonSubmit>
         </div>

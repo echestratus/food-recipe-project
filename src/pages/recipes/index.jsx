@@ -56,22 +56,22 @@ const recipes = ({ recipesProps }) => {
 
   if (loading === true) {
     return (
-      <div className="2xl:bg-[#FFFFFF] 2xl:relative">
-        <div className="2xl:container 2xl:max-w-[1920px] 2xl:mx-auto 2xl:relative">
-          <header className="2xl:flex 2xl:justify-center 2xl:relative 2xl:z-10">
+      <div className="desktop:bg-[#FFFFFF] desktop:relative">
+        <div className="desktop:container desktop:max-w-[1920px] desktop:mx-auto desktop:relative">
+          <header className="desktop:flex desktop:justify-center desktop:relative desktop:z-10">
             <Navbar />
           </header>
         </div>
         {/* List Searched Recipes */}
-        <div className="2xl:w-[1720px] 2xl:h-auto 2xl:min-h-[1210px] 2xl:mx-auto 2xl:flex 2xl:flex-wrap 2xl:gap-24 2xl:mt-10 2xl:leading-none">
+        <div className="desktop:w-[1720px] desktop:h-auto desktop:min-h-[1210px] desktop:mx-auto desktop:flex desktop:flex-wrap desktop:gap-24 desktop:mt-10 desktop:leading-none">
           <Skeleton
             style={{ borderRadius: 10 }}
-            containerClassName="2xl:flex-1"
-            className="2xl:h-[500px]"
+            containerClassName="desktop:flex-1"
+            className="desktop:h-[500px]"
           />
         </div>
         {/* List Searched Recipes */}
-        <div className="2xl:w-[1720px] 2xl:h-auto 2xl:mx-auto 2xl:mt-20 2xl:flex 2xl:justify-center">
+        <div className="desktop:w-[1720px] desktop:h-auto desktop:mx-auto desktop:mt-20 desktop:flex desktop:justify-center">
           <Pagination pagination={pagination} setPagination={setPagination} />
         </div>
 
@@ -81,41 +81,48 @@ const recipes = ({ recipesProps }) => {
       </div>
     );
   }
+  
 
   return (
     <div className="bg-[#FFFFFF] relative">
-      <div className="
-      max-lg:container max-lg:max-w-[1024px] max-lg:mx-auto max-lg:relative
-      2xl:container 2xl:max-w-[1920px] 2xl:mx-auto 2xl:relative
-      ">
-        <header className="
-        max-lg:flex max-lg:justify-center max-lg:relative max-lg:z-10
-        2xl:flex 2xl:justify-center 2xl:relative 2xl:z-10
-        ">
-          <Navbar />
-        </header>
-      </div>
-
-      <div className="
-      max-lg:w-[80%] max-lg:mx-auto max-lg:flex max-lg:flex-wrap max-lg:justify-center max-lg:gap-12
-      2xl:w-[1720px] 2xl:h-auto 2xl:min-h-[1210px] 2xl:mx-auto 2xl:flex 2xl:flex-wrap 2xl:gap-24 2xl:mt-10
-      ">
-        {recipeList
-          .slice(pagination.start, pagination.end)
-          .map((recipe, index) => (
-            <RecipeCard
-              recipeName={recipe.title}
-              imageURL={recipe.image}
-              key={index}
-              id={recipe.id}
-            />
-          ))}
-      </div>
+      <div
+          className="
+        max-lg:container max-lg:max-w-[1024px] max-lg:mx-auto max-lg:relative
+        lg:container lg:max-w-[1536px] lg:mx-auto lg:relative
+        desktop:container desktop:max-w-[1920px] desktop:mx-auto desktop:relative
+        "
+        >
+          <header
+            className="
+          max-lg:flex max-lg:justify-center max-lg:relative max-lg:z-10
+          lg:flex lg:justify-center lg:relative lg:z-10
+          desktop:flex desktop:justify-center desktop:relative desktop:z-10
+          "
+          >
+            <Navbar />
+          </header>
+        </div>
+          <div
+            className="
+          max-lg:w-[80%] max-lg:mx-auto max-lg:flex max-lg:flex-wrap max-lg:justify-center max-lg:gap-12
+          lg:min-w-[1024px] lg:h-auto lg:mx-auto lg:flex lg:justify-center lg:flex-wrap lg:gap-24 lg:relative lg:pb-20 lg:mt-10
+          desktop:min-w-[1536px] desktop:max-w-[1720px] desktop:mx-auto desktop:h-auto desktop:min-h-screen desktop:flex desktop:flex-wrap desktop:justify-center desktop:gap-24 desktop:relative desktop:pb-20 desktop:mt-10
+          "
+          >
+              {recipeList.slice(pagination.start, pagination.end).map((recipe, index) => (
+                  <RecipeCard
+                  recipeName={recipe.title}
+                  imageURL={recipe.image}
+                  key={index}
+                  id={recipe.id}
+                />
+              ))}
+          </div>
 
       <div className="
       max-lg:w-[80%] max-lg:mx-auto max-lg:mt-12 max-lg:flex max-lg:justify-center
       lg:w-[1024px] lg:h-auto lg:mx-auto lg:mt-20 lg:flex lg:justify-center
-      2xl:w-[1536px] 2xl:h-auto 2xl:mx-auto 2xl:mt-20 2xl:flex 2xl:justify-center
+      desktop:w-[1536px] desktop:h-auto desktop:mx-auto desktop:mt-20 desktop:flex desktop:justify-center
       ">
         <Pagination pagination={pagination} setPagination={setPagination} />
       </div>
