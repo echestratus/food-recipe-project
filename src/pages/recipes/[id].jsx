@@ -218,7 +218,7 @@ const ProductDetail = () => {
   return (
     <div className="bg-[#FFFFFF]">
       <div className="
-      max-desktop:container max-desktop:max-w-[1024px] max-desktop:mx-auto
+      max-desktop:container max-desktop:max-w-[1720px] max-desktop:mx-auto
       container max-w-[1920px] mx-auto
       ">
         <header className="flex justify-center">

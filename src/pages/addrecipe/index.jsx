@@ -31,7 +31,7 @@ const addrecipe = () => {
   },[imageURL])
 
   const handleUploadImage = (e) => {
-    dispatch(uploadImageAction(e, getImage))
+    dispatch(uploadImageAction(e))
 
     // const file = e.target.files[0];
     // const formData = new FormData();

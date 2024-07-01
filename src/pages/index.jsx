@@ -15,9 +15,9 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default function Home() {
   const newRecipeImage = "/newrecipe-dummy.png";
-  const newRecipeMenu = "Healthy Bone Broth Ramen (Quick & Easy)";
+  const newRecipeMenu = "Chicken Burger (Quick + Easy)";
   const newRecipeDesc =
-    "Quick + Easy Chicken Bone Broth Ramen- Healthy chicken ramen in a hurry? That’s right!";
+    "Quick and Easy Homemade Chicken Burger - Delicious chicken burger in a hurry? That’s right!";
   // const [recipeList, setRecipeList] = useState([{}]);
   const {
     recipes: recipeList,
@@ -67,7 +67,7 @@ export default function Home() {
 
   if (URLSearchParam) {
     return (
-      <div className="bg-[#FFF5EC] relative">
+      <div className="bg-[#FFF5EC] relative min-h-screen">
         <div
           className="
         max-lg:container max-lg:max-w-[1024px] max-lg:mx-auto max-lg:relative
@@ -115,7 +115,7 @@ export default function Home() {
           <div
             className="
           max-lg:w-[80%] max-lg:mx-auto max-lg:flex max-lg:flex-wrap max-lg:justify-center max-lg:gap-12
-          lg:min-w-[1024px] lg:h-auto lg:min-h-screen lg:mx-auto lg:flex lg:justify-center lg:flex-wrap lg:gap-24 lg:relative lg:pb-20 lg:mt-10
+          lg:min-w-[1024px] lg:h-fit lg:mx-auto lg:flex lg:justify-center lg:flex-wrap lg:gap-24 lg:relative lg:pb-20 lg:mt-10
           desktop:min-w-[1536px] desktop:max-w-[1720px] desktop:mx-auto desktop:h-auto desktop:min-h-screen desktop:flex desktop:flex-wrap desktop:justify-center desktop:gap-24 desktop:relative desktop:pb-20 desktop:mt-10
           "
           >
@@ -259,7 +259,7 @@ export default function Home() {
       <div
         className="
       max-lg:w-max-[640px] max-lg:w-[80%] max-lg:flex max-lg:flex-col max-lg:mx-auto
-      lg:w-[90%] lg:flex lg:mx-auto lg:mt-40
+      lg:w-[90%] lg:flex lg:mx-auto lg:mt-20
       desktop:w-max-[1920px] desktop:w-[1720px] desktop:h-[1210px] desktop:flex desktop:items-center desktop:mx-auto
       "
       >
@@ -268,7 +268,7 @@ export default function Home() {
           className="
         max-lg:mt-8
         lg:w-[60%] lg:relative lg:h-fit
-        desktop:mt-80
+        desktop:mt-0
         "
         >
           <div
@@ -312,7 +312,7 @@ export default function Home() {
             className="
           max-lg:w-[80%] max-lg:flex max-lg:flex-col max-lg:mx-auto
           lg:w-[100%] lg:h-auto lg:flex lg:flex-col lg:mt-24 lg:px-10
-          desktop:w-[570px] desktop:h-auto desktop:ml-36 desktop:flex desktop:flex-col desktop:mt-56
+          desktop:w-[570px] desktop:h-auto desktop:ml-36 desktop:flex desktop:flex-col desktop:mt-0
           "
           >
             <p
