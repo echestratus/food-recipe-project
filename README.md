@@ -17,6 +17,7 @@
 - [Documentation](#documentation)
 - [Feature](#key-features)
 - [Related Project](#related-project)
+- [License](#license)
 - [Contact](#contact)
 - [Contribution](#contribution)
  
@@ -140,6 +141,10 @@ Mama Recipe aims to provide a seamless platform for food enthusiasts to explore,
 
 ## Related Project
 :rocket: [`Backend Mama Recipe`](https://github.com/echestratus/pijar-mama-recipe-be/tree/main)
+
+## License
+
+Distributed under the MIT License. See [`LICENSE`](https://github.com/echestratus/food-recipe-project/blob/main/LICENSE) for more information.
 
 ## Contact
 
