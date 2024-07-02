@@ -34,7 +34,7 @@ const ProfileRecipeCard = ({imageURL, recipeName="Recipe Name", id}) => {
       ) : (
         <img src={imgURL} alt={imageURL} className='absolute w-full h-full rounded-2xl object-cover' />
       )}
-        <p className='w-[130px] font-air font-medium text-[28px] text-[#FFFFFF] ml-8 mb-8 relative'>{recipeName}</p>
+        <p className='w-[130px] font-air font-medium text-[28px] text-[#FFFFFF] ml-8 mb-8 relative bg-[#A2A3A5AA] rounded-lg'>{recipeName}</p>
     </div>
   )
 }
